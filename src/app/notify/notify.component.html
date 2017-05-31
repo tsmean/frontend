@@ -1,0 +1,10 @@
+<div class="notification-wrapper" (click)="removeNotification()">
+  <div class="notification" *ngIf="notification">
+    <md-card class="step"
+             [class.hidden]="hidden"
+             [style.background]="notification.background"
+             [style.color]="notification.color" >
+      {{notification.message}}
+    </md-card>
+  </div>
+</div>
