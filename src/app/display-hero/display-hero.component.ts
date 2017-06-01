@@ -13,7 +13,7 @@ export class DisplayHeroComponent implements OnChanges, OnInit {
 
 
   @Input()
-  hero: Hero;
+  hero: Hero = {};
 
   heroCopy: Hero;
 
@@ -47,7 +47,7 @@ export class DisplayHeroComponent implements OnChanges, OnInit {
   }
 
   resetCopy() {
-      this.heroCopy = this.utilsService.deepCopyData(this.hero);
+    this.heroCopy = this.utilsService.deepCopyData(this.hero);
   }
 
 }

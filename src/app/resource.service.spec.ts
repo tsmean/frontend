@@ -1,15 +1,23 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { HeroService } from './hero.service';
+import { ResourceService } from './resource.service';
+import {HttpModule} from '@angular/http';
+import {UtilsService} from './utils.service';
 
-describe('HeroService', () => {
+describe('ResourceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HeroService]
+      providers: [
+        ResourceService,
+        UtilsService
+      ],
+      imports: [
+        HttpModule
+      ]
     });
   });
 
-  it('should ...', inject([HeroService], (service: HeroService) => {
+  it('should ...', inject([ResourceService], (service: ResourceService) => {
     expect(service).toBeTruthy();
   }));
 });

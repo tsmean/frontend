@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as url from 'url';
 
 @Injectable()
 export class UtilsService {

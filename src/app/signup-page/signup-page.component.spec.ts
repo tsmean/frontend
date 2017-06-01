@@ -1,6 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignupPageComponent } from './signup-page.component';
+import {UtilsService} from '../utils.service';
+import {UserService} from '../user.service';
+import {NotifyService} from '../notify.service';
+import {SignUpComponent} from '../sign-up/sign-up.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {MdButtonModule, MdCardModule, MdIconModule, MdInputModule} from '@angular/material';
 
 describe('SignupPageComponent', () => {
   let component: SignupPageComponent;
@@ -8,7 +17,25 @@ describe('SignupPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupPageComponent ]
+      providers: [
+        UtilsService,
+        UserService,
+        NotifyService
+      ],
+      declarations: [
+        SignupPageComponent,
+        SignUpComponent
+      ],
+      imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpModule,
+        MdInputModule,
+        MdButtonModule,
+        MdCardModule,
+        MdIconModule
+      ]
     })
     .compileComponents();
   }));

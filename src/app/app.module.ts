@@ -15,8 +15,10 @@ import {BroadcastService} from './broadcast.service';
 import { TopnavComponent } from './topnav/topnav.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdInputModule, MdCardModule, MdButtonModule, MdToolbarModule, MdMenuModule,
-MdIconModule} from '@angular/material';
+import {
+  MdInputModule, MdCardModule, MdButtonModule, MdToolbarModule, MdMenuModule,
+  MdIconModule
+} from '@angular/material';
 import 'hammerjs';
 import {UserService} from './user.service';
 import {NotifyService} from './notify.service';
