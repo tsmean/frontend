@@ -9,6 +9,6 @@ describe('tsmean-fe App', () => {
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getTeaserText()).toEqual('This is going to be a cool web-app!');
   });
 });

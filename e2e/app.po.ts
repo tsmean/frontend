@@ -5,7 +5,7 @@ export class TsmeanFePage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getTeaserText() {
+    return element(by.css('app-jumbotron h1')).getText();
   }
 }
