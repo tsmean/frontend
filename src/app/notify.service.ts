@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {AppNotification, NotifyOptions} from "./notification";
+import {Subject} from 'rxjs/Subject';
+import {AppNotification, NotifyOptions} from './notification';
 
 
 @Injectable()
 export class NotifyService {
+
+  private _notifications: Subject<AppNotification> = new Subject();
 
   constructor() {}
 
@@ -29,11 +31,10 @@ export class NotifyService {
       timer: options && options.timer || 3000,
       transition: '3s',
       opacity: '1'
-    })
+    });
   }
 
-  private _notifications: Subject<AppNotification> = new Subject();
-  public get notifications() { //TODO: make this const somehow. static?
+  public get notifications() { // TODO: make this const somehow. static?
     return this._notifications;
   }
 

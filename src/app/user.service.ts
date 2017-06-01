@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import {User} from "./user";
-import {environment} from "../environments/environment";
-import {UtilsService} from "./utils.service";
+import {User} from './user';
+import {environment} from '../environments/environment';
+import {UtilsService} from './utils.service';
 
 @Injectable()
 export class UserService {
@@ -13,11 +13,11 @@ export class UserService {
   ) { }
 
   private get loginApi(): string {
-    return this.utils.urlJoin(environment.api, 'login')
+    return this.utils.urlJoin(environment.api, 'login');
   }
 
   private get userApi(): string {
-    return this.utils.urlJoin(environment.api, 'users')
+    return this.utils.urlJoin(environment.api, 'users');
   }
 
   login(username: string, password: string) {

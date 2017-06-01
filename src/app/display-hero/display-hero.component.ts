@@ -1,9 +1,8 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {Hero} from "../hero";
-import {HeroSettings} from "../hero-settings";
-import {EmittedEvent} from "../emitted-event";
-import {UtilsService} from "../utils.service";
-import {HeroService} from "../hero.service";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Hero} from '../hero';
+import {HeroSettings} from '../hero-settings';
+import {UtilsService} from '../utils.service';
+import {HeroService} from '../hero.service';
 
 @Component({
   selector: 'app-display-hero',
@@ -12,15 +11,20 @@ import {HeroService} from "../hero.service";
 })
 export class DisplayHeroComponent implements OnChanges, OnInit {
 
-  constructor(
-      private utilsService: UtilsService,
-      private heroService: HeroService
-  ) { }
 
   @Input()
   hero: Hero;
 
   heroCopy: Hero;
+
+  heroSettings: HeroSettings = {
+    isBeingEdited: false
+  };
+
+  constructor(
+      private utilsService: UtilsService,
+      private heroService: HeroService
+  ) { }
 
   ngOnInit() {
     this.resetCopy();
@@ -29,11 +33,6 @@ export class DisplayHeroComponent implements OnChanges, OnInit {
   ngOnChanges(changes: SimpleChanges) {
       this.resetCopy();
   }
-
-
-  heroSettings: HeroSettings = {
-    isBeingEdited: false
-  };
 
 
   toggleEditable() {

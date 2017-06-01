@@ -1,7 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NotifyService} from "../notify.service";
-import {AppNotification} from "../notification";
-import {Observable, Subject} from "rxjs";
+import {NotifyService} from '../notify.service';
+import {AppNotification} from '../notification';
+import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/observable/timer';
 
 @Component({
   selector: 'app-notify',
@@ -10,11 +13,15 @@ import {Observable, Subject} from "rxjs";
 })
 export class NotifyComponent implements OnInit, OnDestroy {
 
+  public notification: AppNotification;
+
+  private onDestroyStarted: Subject<void> = new Subject<void>();
+
+  public hidden;
+
   constructor(
       private notifyService: NotifyService
   ) {}
-
-  public hidden;
 
   ngOnInit() {
 
@@ -23,7 +30,7 @@ export class NotifyComponent implements OnInit, OnDestroy {
 
       this.hidden = false;
 
-      let somethinElseHappened: boolean = false;
+      let somethinElseHappened = false;
       const timer = Observable.timer(notification.timer);
       const innerSubscription = this.notifyService
           .notifications
@@ -38,22 +45,18 @@ export class NotifyComponent implements OnInit, OnDestroy {
         }
       }, notification.timer);
 
-    })
+    });
   }
 
   removeNotification() {
     this.hidden = true;
     setTimeout(() => {
       this.notification = undefined;
-    }, 300)
+    }, 300);
   }
 
-  private onDestroyStarted: Subject<void> = new Subject<void>();
   ngOnDestroy() {
     this.onDestroyStarted.next();
   }
-
-  public notification: AppNotification;
-
 
 }

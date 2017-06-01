@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Hero} from "../hero";
-import {HeroService} from "../hero.service";
+import {Hero} from '../hero';
+import {HeroService} from '../hero.service';
 
 @Component({
   selector: 'app-display-hero-list',
@@ -9,13 +9,13 @@ import {HeroService} from "../hero.service";
 })
 export class DisplayHeroListComponent implements OnInit {
 
+  @Input()
+  heroes: Hero[];
+
   constructor() { }
 
   ngOnInit() {
 
   }
-
-  @Input()
-  heroes: Hero[];
 
 }

@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import {TopnavComponent} from "./topnav/topnav.component";
+import {TopnavComponent} from './topnav/topnav.component';
 
 
 describe('AppComponent', () => {

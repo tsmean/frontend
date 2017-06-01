@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../user.service";
-import {User} from "../user";
-import {NotifyService} from "../notify.service";
-import {HttpResponse} from "selenium-webdriver/http";
+import {UserService} from '../user.service';
+import {NotifyService} from '../notify.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,23 +9,24 @@ import {HttpResponse} from "selenium-webdriver/http";
 })
 export class SignUpComponent {
 
-  constructor(
-      private userService: UserService,
-      private notifyService: NotifyService
-  ) { }
-
   private newUser = {
     email: undefined,
     uid: undefined
   };
-  private password = "";
+
+  private password = '';
+
+  constructor(
+      private userService: UserService,
+      private notifyService: NotifyService
+  ) { }
 
   doSignUp() {
     this.userService.createUser(this.newUser, this.password).then(resp => {
       this.notifyService.success('User created');
     }, errorResp => {
       this.notifyService.error(errorResp.statusText);
-    })
+    });
   }
 
 }

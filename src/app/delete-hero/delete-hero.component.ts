@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Hero} from "../hero";
-import {HeroService} from "../hero.service";
-import {BroadcastService} from "../broadcast.service";
+import {Hero} from '../hero';
+import {HeroService} from '../hero.service';
+import {BroadcastService} from '../broadcast.service';
 
 @Component({
   selector: 'app-delete-hero',
@@ -10,6 +10,9 @@ import {BroadcastService} from "../broadcast.service";
 })
 export class DeleteHeroComponent implements OnInit {
 
+  @Input()
+  hero: Hero;
+
   constructor(
     private heroService: HeroService,
     private broadcast: BroadcastService
@@ -17,9 +20,6 @@ export class DeleteHeroComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  @Input()
-  hero: Hero;
 
   public deleteHero() {
     this.heroService.deleteHero(this.hero.uid).then(resp => {

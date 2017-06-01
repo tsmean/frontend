@@ -1,3 +1,3 @@
 export interface HeroSettings {
-  isBeingEdited?: boolean
+  isBeingEdited?: boolean;
 }

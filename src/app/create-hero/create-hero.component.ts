@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Hero} from "../hero";
-import {HeroService} from "../hero.service";
-import {NotifyService} from "../notify.service";
+import {Hero} from '../hero';
+import {HeroService} from '../hero.service';
+import {NotifyService} from '../notify.service';
 
 @Component({
   selector: 'app-create-hero',
@@ -10,16 +10,19 @@ import {NotifyService} from "../notify.service";
 })
 export class CreateHeroComponent implements OnInit {
 
+  public newHero: Hero;
+
+  @Output()
+  newHeroCreated = new EventEmitter();
+
   constructor(
       private heroService: HeroService,
       private notifyService: NotifyService
   ) { }
 
   ngOnInit() {
-    this.newHero = {}
+    this.newHero = {};
   }
-
-  public newHero: Hero;
 
   public createHero() {
     const heroObs = this.heroService.createHero(this.newHero);
@@ -35,7 +38,5 @@ export class CreateHeroComponent implements OnInit {
     });
   }
 
-  @Output()
-  newHeroCreated = new EventEmitter();
 
 }

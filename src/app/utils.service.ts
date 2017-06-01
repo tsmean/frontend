@@ -1,15 +1,10 @@
 import { Injectable } from '@angular/core';
-import * as url from "url";
+import * as url from 'url';
 
 @Injectable()
 export class UtilsService {
 
   constructor() { }
-
-  public mergeObjectTwoIntoObjectOne(objectOne, objectTwo) {
-    //ATTENTION: overwrites existing props of object one
-    for (var attrname in objectTwo) { objectOne[attrname] = objectTwo[attrname]; }
-  }
 
   /* Copies the data, but loses function assignments! */
   public deepCopyData(data: Object) {
@@ -21,7 +16,7 @@ export class UtilsService {
    */
   public urlJoin(partOne, partTwo): string {
 
-    //TODO: query parameter part
+    // TODO: query parameter part
 
     if (partOne.charAt(partOne.length - 1) === '/') {
       if (partTwo.charAt(0) === '/') {

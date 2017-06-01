@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NotifyService} from "../notify.service";
+import {NotifyService} from '../notify.service';
 
 @Component({
   selector: 'app-jumbotron',
@@ -16,7 +16,7 @@ export class JumbotronComponent implements OnInit {
   }
 
   doStart() {
-    this.notifyService.success('Nothing happens. Yet!')
+    this.notifyService.success('Nothing happens. Yet!');
   }
 
 }

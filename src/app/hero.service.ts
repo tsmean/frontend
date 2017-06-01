@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {ResourceName, ResourceService} from "./resource.service";
-import {Hero} from "./hero";
-import {Observable} from "rxjs";
+import {ResourceName, ResourceService} from './resource.service';
+import {Hero} from './hero';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class HeroService {
@@ -11,7 +11,7 @@ export class HeroService {
   ) { }
 
   private get resourceName (): ResourceName {
-    return 'heroes'
+    return 'heroes';
   }
 
   getHeros(): Promise<Observable<Hero>[]> {
