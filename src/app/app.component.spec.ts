@@ -1,33 +1,33 @@
-import { TestBed, async } from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 
-import { AppComponent } from './app.component';
-import {TopnavComponent} from './topnav/topnav.component';
-import {NotifyComponent} from './notify/notify.component';
-import {MdButtonModule, MdCardModule, MdIconModule, MdInputModule} from '@angular/material';
-import {NotifyService} from './notify.service';
-import {AppRoutingModule} from './app-routing/app-routing.module';
-import {LandingComponent} from './landing/landing.component';
-import {LoginComponent} from './login/login.component';
-import {SignupPageComponent} from './signup-page/signup-page.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {HeroWrapperComponent} from './hero-wrapper/hero-wrapper.component';
-import {SpacerComponent} from './spacer/spacer.component';
-import {JumbotronComponent} from './jumbotron/jumbotron.component';
-import {SignUpComponent} from './sign-up/sign-up.component';
-import {DisplayHeroListComponent} from './display-hero-list/display-hero-list.component';
-import {DisplayHeroComponent} from './display-hero/display-hero.component';
-import {DeleteHeroComponent} from './delete-hero/delete-hero.component';
-import {CreateHeroComponent} from './create-hero/create-hero.component';
-import {ResourceService} from './resource.service';
-import {HeroService} from 'app/hero.service';
-import {UtilsService} from './utils.service';
-import {BroadcastService} from './broadcast.service';
-import {UserService} from './user.service';
+import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import { APP_BASE_HREF } from '@angular/common';
+import {APP_BASE_HREF} from '@angular/common';
+import {ResourceService} from './services/resource.service';
+import {HeroService} from './services/hero.service';
+import {UtilsService} from './services/utils.service';
+import {BroadcastService} from './services/broadcast.service';
+import {UserService} from './services/user.service';
+import {NotifyService} from './services/notify.service';
+import {AppRoutingModule} from './app-routing/app-routing.module';
+import {MdButtonModule, MdCardModule, MdIconModule, MdInputModule} from '@angular/material';
+import {CreateHeroComponent} from './components/create-hero/create-hero.component';
+import {DeleteHeroComponent} from './components/delete-hero/delete-hero.component';
+import {DisplayHeroComponent} from './components/display-hero/display-hero.component';
+import {DisplayHeroListComponent} from './components/display-hero-list/display-hero-list.component';
+import {TopnavComponent} from './components/topnav/topnav.component';
+import {SignUpComponent} from './components/sign-up/sign-up.component';
+import {NotifyComponent} from './components/notify/notify.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {LandingComponent} from './components/landing/landing.component';
+import {SignupPageComponent} from './components/signup-page/signup-page.component';
+import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
+import {SpacerComponent} from './components/spacer/spacer.component';
+import {LoginComponent} from './components/login/login.component';
+import {HeroWrapperComponent} from './components/hero-wrapper/hero-wrapper.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

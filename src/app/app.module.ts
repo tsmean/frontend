@@ -2,35 +2,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {ResourceService} from './services/resource.service';
+import {HeroService} from './services/hero.service';
+import {UtilsService} from './services/utils.service';
+import {BroadcastService} from './services/broadcast.service';
+import {UserService} from './services/user.service';
+import {NotifyService} from './services/notify.service';
+import {AppRoutingModule} from './app-routing/app-routing.module';
+import {CreateHeroComponent} from './components/create-hero/create-hero.component';
+import {DeleteHeroComponent} from './components/delete-hero/delete-hero.component';
+import {DisplayHeroComponent} from './components/display-hero/display-hero.component';
+import {DisplayHeroListComponent} from './components/display-hero-list/display-hero-list.component';
+import {TopnavComponent} from './components/topnav/topnav.component';
+import {SignUpComponent} from './components/sign-up/sign-up.component';
+import {NotifyComponent} from './components/notify/notify.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {LandingComponent} from './components/landing/landing.component';
+import {SignupPageComponent} from './components/signup-page/signup-page.component';
+import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
+import {SpacerComponent} from './components/spacer/spacer.component';
+import {LoginComponent} from './components/login/login.component';
+import {HeroWrapperComponent} from './components/hero-wrapper/hero-wrapper.component';
 
 import { AppComponent } from './app.component';
-import { CreateHeroComponent } from './create-hero/create-hero.component';
-import { DeleteHeroComponent } from './delete-hero/delete-hero.component';
-import { DisplayHeroComponent } from './display-hero/display-hero.component';
-import { DisplayHeroListComponent } from './display-hero-list/display-hero-list.component';
-import {ResourceService} from './resource.service';
-import {HeroService} from './hero.service';
-import {UtilsService} from './utils.service';
-import {BroadcastService} from './broadcast.service';
-import { TopnavComponent } from './topnav/topnav.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdInputModule, MdCardModule, MdButtonModule, MdToolbarModule, MdMenuModule,
   MdIconModule
 } from '@angular/material';
 import 'hammerjs';
-import {UserService} from './user.service';
-import {NotifyService} from './notify.service';
-import { NotifyComponent } from './notify/notify.component';
-import {AppRoutingModule} from './app-routing/app-routing.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LandingComponent } from './landing/landing.component';
-import { SignupPageComponent } from './signup-page/signup-page.component';
-import { JumbotronComponent } from './jumbotron/jumbotron.component';
-import { SpacerComponent } from './spacer/spacer.component';
-import { LoginComponent } from './login/login.component';
-import { HeroWrapperComponent } from './hero-wrapper/hero-wrapper.component';
 
 
 @NgModule({
