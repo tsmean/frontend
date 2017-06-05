@@ -1,0 +1,23 @@
+.lernnavi-planet-wrapper {
+    animation: floating 5s infinite;
+    cursor: pointer;
+}
+.lernnavi-planet {
+    animation: pulsating 6s infinite;
+}
+
+@keyframes floating {
+    0%   {transform: translate(0px,0px);}
+    25%  {transform: translate(3px,6px);}
+    50%  {transform: translate(6px,3px);}
+    75%  {transform: translate(0px,6px);}
+    100% {transform: translate(0px,0px);}
+}
+
+@keyframes pulsating {
+    0%   {background: rgba(255, 255, 255, 1);}
+    25%  {background: rgba(255, 255, 255, 0.8);}
+    50%  {background: rgba(255, 255, 255, 0.6);}
+    75%  {background: rgba(255, 255, 255, 0.8);}
+    100% {background: rgba(255, 255, 255, 1);}
+}
