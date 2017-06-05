@@ -40,6 +40,7 @@ import { AufgabentypenComponent } from './components/aufgabentypen/aufgabentypen
 import { ForumComponent } from './components/forum/forum.component';
 import { KompetenzenUebersichtComponent } from './components/kompetenzen-uebersicht/kompetenzen-uebersicht.component';
 import { EinstufungstestComponent } from './components/einstufungstest/einstufungstest.component';
+import { TileComponent } from './components/tile/tile.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { EinstufungstestComponent } from './components/einstufungstest/einstufun
     AufgabentypenComponent,
     ForumComponent,
     KompetenzenUebersichtComponent,
-    EinstufungstestComponent
+    EinstufungstestComponent,
+    TileComponent
   ],
   imports: [
     BrowserModule,

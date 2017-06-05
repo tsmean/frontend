@@ -2,44 +2,28 @@
   
   <!-- Desktop / Tablet View -->
   <div class="lernnavi-landing-desktop hidden-xs-down">
-    <!-- top -->
-    <app-ln-planet text="Lehrperson einladen"
-                   link="lehrperson-einladen"
-                   style="position: absolute; top: 50%; left: 50%; transform: translate(-175px, -190px)"></app-ln-planet>
-    <app-ln-planet text="Aufgaben Editor"
-                   link="aufgaben-editor"
-                   style="position: absolute; top: 50%; right: 50%; transform: translate(160px, -180px)"></app-ln-planet>
     
-    <!-- center -->
-    <app-ln-planet text="Einstufungstest"
-                   link="einstufungstest"
-                   style="position: absolute; top: 50%; left: 50%; transform: translate(-255px, -45%)"></app-ln-planet>
-  
+    <app-ln-planet *ngFor="let planet of planets"
+                   [link]="planet.link"
+                   [icon]="iconSrc(planet.icon)"
+                   [ngStyle]="planet.aboveXsStyle"
+                   [text]="planet.text">
+    </app-ln-planet>
+    
     <img src="/assets/img/lernnavi-logo-alt.svg"
          height="60px"
          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
          alt="">
   
-    <app-ln-planet text="Aufgabentypen"
-                   link="aufgabentypen"
-                   style="position: absolute; top: 50%; right: 50%; transform: translate(250px, -55%)"></app-ln-planet>
-  
-    <!-- bottom -->
-    <app-ln-planet text="Kompetenzen-Übersicht"
-                   link="kompetenzen-uebersicht"
-                   style="position: absolute; bottom: 50%; left: 50%; transform: translate(-166px, 195px) "></app-ln-planet>
-    <app-ln-planet text="Forum"
-                   link="forum"
-                   style="position: absolute; bottom: 50%; right: 50%; transform: translate(155px, 190px)"></app-ln-planet>
   </div>
   
   <!-- Mobile View -->
   <div class="lernnavi-landing-mobile hidden-sm-up">
-    <md-card>
-      <div style="display: flex; align-items: center; justify-content: center; text-align: center">
-        Mobile view not implemented yet.
-      </div>
-    </md-card>
+    <app-tile *ngFor="let planet of planets"
+                   [link]="planet.link"
+                   [icon]="iconSrc(planet.icon)"
+                   [text]="planet.text">
+    </app-tile>
   </div>
   
 
