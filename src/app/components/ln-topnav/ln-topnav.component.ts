@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {StoreService} from '../../services/store.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ln-topnav',
@@ -9,14 +10,19 @@ import {StoreService} from '../../services/store.service';
 export class LnTopnavComponent implements OnInit {
 
   constructor(
-    private store: StoreService
+    private store: StoreService,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
 
   toggleMobileView () {
-    this.store.mobileView.toggleMobileView();
+    if (this.router.url.indexOf('mobile') > -1) {
+      this.router.navigate(['/']);
+    } else {
+      this.router.navigate(['/mobile']);
+    }
   }
 
 }

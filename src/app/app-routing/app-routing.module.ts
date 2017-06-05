@@ -10,6 +10,7 @@ import {LehrpersonEinladenComponent} from '../components/lehrperson-einladen/leh
 import {ForumComponent} from '../components/forum/forum.component';
 import {KompetenzenUebersichtComponent} from '../components/kompetenzen-uebersicht/kompetenzen-uebersicht.component';
 import {AufgabentypenComponent} from '../components/aufgabentypen/aufgabentypen.component';
+import {MobileComponent} from '../mobile/mobile.component';
 
 
 const appRoutes: Routes = [
@@ -27,6 +28,7 @@ const lernnaviRoutes: Routes = [
   { path: 'forum', component: ForumComponent},
   { path: 'kompetenzen-uebersicht', component: KompetenzenUebersichtComponent},
   { path: 'aufgabentypen', component: AufgabentypenComponent},
+  { path: 'mobile', component: MobileComponent},
 
 ];
 const insertArrayTwoIntoArrayOne = (a1, a2, insertPosition: number): void => {

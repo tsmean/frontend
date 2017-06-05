@@ -42,6 +42,7 @@ import { KompetenzenUebersichtComponent } from './components/kompetenzen-uebersi
 import { EinstufungstestComponent } from './components/einstufungstest/einstufungstest.component';
 import { TileComponent } from './components/tile/tile.component';
 import {StoreService} from './services/store.service';
+import { MobileComponent } from './mobile/mobile.component';
 
 
 
@@ -71,7 +72,8 @@ import {StoreService} from './services/store.service';
     ForumComponent,
     KompetenzenUebersichtComponent,
     EinstufungstestComponent,
-    TileComponent
+    TileComponent,
+    MobileComponent
   ],
   imports: [
     BrowserModule,

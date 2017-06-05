@@ -24,6 +24,13 @@ export class AppComponent {
           const borderlessPages = ['/'];
           this.isBorderlessPage = borderlessPages.indexOf(newRoute.urlAfterRedirects) > -1;
 
+          // If not on mobile, then set mobile to false, else set it to true
+          if (newRoute.urlAfterRedirects.indexOf('mobile') > -1) {
+            this.store.mobileView.setMobileView(true);
+          } else {
+            this.store.mobileView.setMobileView(false);
+          }
+
         }
       });
     };
