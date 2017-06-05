@@ -12,4 +12,5 @@
 .lernnavi-landing-desktop {
     position: relative;
     min-height: calc(100vh - 84px);
+    height: 450px;
 }
