@@ -33,6 +33,7 @@ import {
 import 'hammerjs';
 import { LernnaviComponent } from './components/lernnavi/lernnavi.component';
 import { LnTopnavComponent } from './components/ln-topnav/ln-topnav.component';
+import { LnPlanetComponent } from './components/ln-planet/ln-planet.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { LnTopnavComponent } from './components/ln-topnav/ln-topnav.component';
     LoginComponent,
     HeroWrapperComponent,
     LernnaviComponent,
-    LnTopnavComponent
+    LnTopnavComponent,
+    LnPlanetComponent
   ],
   imports: [
     BrowserModule,
