@@ -31,6 +31,8 @@ import {
   MdIconModule
 } from '@angular/material';
 import 'hammerjs';
+import { LernnaviComponent } from './components/lernnavi/lernnavi.component';
+import { LnTopnavComponent } from './components/ln-topnav/ln-topnav.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import 'hammerjs';
     JumbotronComponent,
     SpacerComponent,
     LoginComponent,
-    HeroWrapperComponent
+    HeroWrapperComponent,
+    LernnaviComponent,
+    LnTopnavComponent
   ],
   imports: [
     BrowserModule,
