@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
+import {StoreService} from './services/store.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
   counter = 0;
 
   constructor(
-    router: Router
+    router: Router,
+    private store: StoreService
   ) {
     const handleRouteChange = () => {
       router.events.subscribe(newRoute => {

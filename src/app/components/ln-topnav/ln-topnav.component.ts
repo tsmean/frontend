@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BroadcastService} from '../../services/broadcast.service';
+import {StoreService} from '../../services/store.service';
 
 @Component({
   selector: 'app-ln-topnav',
@@ -8,18 +8,15 @@ import {BroadcastService} from '../../services/broadcast.service';
 })
 export class LnTopnavComponent implements OnInit {
 
-  mobileView = false;
-
   constructor(
-    private broadcast: BroadcastService
+    private store: StoreService
   ) { }
 
   ngOnInit() {
   }
 
   toggleMobileView () {
-    this.mobileView = !this.mobileView;
-    this.broadcast.app.toggleMobileView.next();
+    this.store.mobileView.toggleMobileView();
   }
 
 }

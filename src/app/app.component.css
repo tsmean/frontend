@@ -9,3 +9,7 @@
     padding: 0;
 }
 
+.mobile-view {
+    max-width: 500px;
+    margin: 0 auto;
+}

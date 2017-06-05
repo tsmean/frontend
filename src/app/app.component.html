@@ -1,5 +1,7 @@
-<app-notify></app-notify>
-<app-ln-topnav></app-ln-topnav>
-<div class="app-page" [ngClass]="{'borderless-page': isBorderlessPage}">
-  <router-outlet></router-outlet>
+<div [ngClass]="{'mobile-view': (store.mobileView.mobileView | async)}">
+  <app-notify></app-notify>
+  <app-ln-topnav></app-ln-topnav>
+  <div class="app-page" [ngClass]="{'borderless-page': isBorderlessPage}">
+    <router-outlet></router-outlet>
+  </div>
 </div>
