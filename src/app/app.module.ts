@@ -41,6 +41,8 @@ import { ForumComponent } from './components/forum/forum.component';
 import { KompetenzenUebersichtComponent } from './components/kompetenzen-uebersicht/kompetenzen-uebersicht.component';
 import { EinstufungstestComponent } from './components/einstufungstest/einstufungstest.component';
 import { TileComponent } from './components/tile/tile.component';
+import {StoreService} from './services/store.service';
+
 
 
 @NgModule({
@@ -85,12 +87,13 @@ import { TileComponent } from './components/tile/tile.component';
     MdIconModule
   ],
   providers: [
-      ResourceService,
-      HeroService,
-      UtilsService,
-      BroadcastService,
-      UserService,
-      NotifyService
+    ResourceService,
+    HeroService,
+    UtilsService,
+    BroadcastService,
+    UserService,
+    NotifyService,
+    StoreService
   ],
   bootstrap: [AppComponent]
 })
