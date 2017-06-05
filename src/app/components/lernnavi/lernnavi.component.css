@@ -1,0 +1,10 @@
+.lernnavi-landing {
+    min-height: calc(100vh - 64px);
+    background: linear-gradient(90deg,#207786 0,#268B9D);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+}
