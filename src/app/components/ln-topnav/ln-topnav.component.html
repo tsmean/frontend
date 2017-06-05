@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-toggleable-sm navbar-light bs-topnav">
-  <!--button class="navbar-toggler navbar-toggler-right"
+  <button class="navbar-toggler navbar-toggler-right"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -7,7 +7,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button-->
+  </button>
   
   <a routerLink="/" class="navbar-brand">
     <img src="../assets/img/lernnavi-logo-primary.svg"
@@ -16,15 +16,14 @@
          alt="Home Button">
   </a>
   
-  <!--div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="signup"><b>Sign Up</b></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="login"><b>Log In</b></a>
+        <button md-button (click)="toggleMobileView()" class="nav-link" >
+          {{mobileView ? 'Switch back' : 'Switch to mobile-view'}}
+        </button>
       </li>
     </ul>
-  </div-->
+  </div>
   
 </nav>
