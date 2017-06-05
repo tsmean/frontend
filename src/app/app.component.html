@@ -1,7 +1,16 @@
-<div [ngClass]="{'mobile-view': (store.mobileView.mobileView | async)}">
+<div *ngIf="!(store.mobileView.mobileView | async)" [ngClass]="{'mobile-viewww': (store.mobileView.mobileView | async)}">
   <app-notify></app-notify>
   <app-ln-topnav></app-ln-topnav>
   <div class="app-page" [ngClass]="{'borderless-page': isBorderlessPage}">
     <router-outlet></router-outlet>
   </div>
+</div>
+<div *ngIf="(store.mobileView.mobileView | async)"
+     style="padding: 20px; margin: 0 auto; text-align: center;">
+  <iframe src="/"
+          class="md-whiteframe-1dp"
+          frameborder="0"
+          width="320"
+          height="568">
+  </iframe>
 </div>
