@@ -30,3 +30,7 @@ p.large {
 ul.no-bullets {
     list-style-type: none;
 }
+
+a:hover {
+    text-decoration: none;
+}

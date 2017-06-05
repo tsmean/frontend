@@ -34,6 +34,12 @@ import 'hammerjs';
 import { LernnaviComponent } from './components/lernnavi/lernnavi.component';
 import { LnTopnavComponent } from './components/ln-topnav/ln-topnav.component';
 import { LnPlanetComponent } from './components/ln-planet/ln-planet.component';
+import { LehrpersonEinladenComponent } from './components/lehrperson-einladen/lehrperson-einladen.component';
+import { AufgabenEditorComponent } from './components/aufgaben-editor/aufgaben-editor.component';
+import { AufgabentypenComponent } from './components/aufgabentypen/aufgabentypen.component';
+import { ForumComponent } from './components/forum/forum.component';
+import { KompetenzenUebersichtComponent } from './components/kompetenzen-uebersicht/kompetenzen-uebersicht.component';
+import { EinstufungstestComponent } from './components/einstufungstest/einstufungstest.component';
 
 
 @NgModule({
@@ -55,7 +61,13 @@ import { LnPlanetComponent } from './components/ln-planet/ln-planet.component';
     HeroWrapperComponent,
     LernnaviComponent,
     LnTopnavComponent,
-    LnPlanetComponent
+    LnPlanetComponent,
+    LehrpersonEinladenComponent,
+    AufgabenEditorComponent,
+    AufgabentypenComponent,
+    ForumComponent,
+    KompetenzenUebersichtComponent,
+    EinstufungstestComponent
   ],
   imports: [
     BrowserModule,

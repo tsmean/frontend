@@ -1,6 +1,7 @@
-<div class="lernnavi-planet-wrapper"
-     [style.animationDelay]="randomNegativeDelay"
-     style="color: white; display: flex; align-items: center; flex-direction: column; justify-content: center">
+<a class="lernnavi-planet-wrapper"
+   [routerLink]="link"
+   [style.animationDelay]="randomNegativeDelay"
+   style="color: white; display: flex; align-items: center; flex-direction: column; justify-content: center">
   <div class="lernnavi-planet"
        [style.animationDelay]="randomNegativeDelay"
        [style.borderRadius]="circleRadius + 'px'"
@@ -13,4 +14,4 @@
       {{text || "That's great"}}
     </div>
   </div>
-</div>
+</a>

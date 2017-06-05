@@ -22,6 +22,8 @@ export class AppComponent {
           const borderlessPages = ['/'];
           this.isBorderlessPage = borderlessPages.indexOf(newRoute.urlAfterRedirects) > -1;
 
+          console.log(this.isBorderlessPage, 'is borderless');
+
         }
       });
     };
