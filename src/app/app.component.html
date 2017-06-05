@@ -1,5 +1,5 @@
 <app-notify></app-notify>
 <app-ln-topnav></app-ln-topnav>
-<div>
+<div class="app-page" [ngClass]="{'borderless-page': isBorderlessPage}">
   <router-outlet></router-outlet>
 </div>
