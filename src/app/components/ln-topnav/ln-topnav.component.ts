@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class LnTopnavComponent implements OnInit {
 
   constructor(
-    private store: StoreService,
+    public store: StoreService,
     private router: Router
   ) { }
 
