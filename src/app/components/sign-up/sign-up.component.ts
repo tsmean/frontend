@@ -9,12 +9,12 @@ import {NotifyService} from '../../services/notify.service';
 })
 export class SignUpComponent {
 
-  private newUser = {
+  newUser = {
     email: undefined,
     uid: undefined
   };
 
-  private password = '';
+  password = '';
 
   constructor(
       private userService: UserService,
