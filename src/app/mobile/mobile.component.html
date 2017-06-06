@@ -1,12 +1,18 @@
 <div style="padding: 20px; margin: 0 auto; text-align: center;">
   
-  <div style="padding: 30px; border-radius: 30px; background: #0f0f0f; display: inline-block">
-    <iframe src="/"
-            style="border: 1px solid gray; background: white"
-            class="whiteframe"
-            frameborder="0"
-            width="320"
-            height="568">
-    </iframe>
+  <div style="padding: 30px; border-radius: 30px; background: #0f0f0f; display: inline-block;">
+    <div style="height: 568px; width: 320px; overflow: hidden; background: #343434;">
+  
+      <div class="loader" [style.display]="loading ? 'block' : 'none'" style="margin-top: 250px"></div>
+  
+      <iframe src="/"
+              [style.visibility]="!loading ? 'visible' : 'hidden'"
+              class="mobile-iframe"
+              frameborder="0"
+              width="320"
+              height="568">
+      </iframe>
+      
+    </div>
   </div>
 </div>

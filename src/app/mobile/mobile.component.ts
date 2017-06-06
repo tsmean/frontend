@@ -9,12 +9,18 @@ import {Router} from '@angular/router';
 })
 export class MobileComponent implements OnInit {
 
+  loading = true;
+
   constructor(
     private store: StoreService,
     private router: Router
   ) { }
 
+
   ngOnInit() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 2300);
   }
 
 }
