@@ -9,7 +9,7 @@ const radarChart = function RadarChart(id, data, options) {
     margin: {top: 20, right: 20, bottom: 20, left: 20}, // The margins of the SVG
     levels: 3,				// How many levels or inner circles should there be drawn
     maxValue: 0, 			// What is the value that the biggest circle will represent
-    labelFactor: 1.25, 	// How much farther than the radius of the outer circle should the labels be placed
+    labelFactor: 1.1, 	// How much farther than the radius of the outer circle should the labels be placed
     wrapWidth: 60, 		// The number of pixels after which a label needs to be given a new line
     opacityArea: 0.35, 	// The opacity of the area of the blob
     dotRadius: 4, 			// The size of the colored circles of each blog
@@ -111,11 +111,12 @@ const radarChart = function RadarChart(id, data, options) {
     .append('g')
     .attr('class', 'axis');
   // Append the lines
+  const lineLengthScale = 1.1; // doesn't seem to have any impact
   axis.append('line')
     .attr('x1', 0)
     .attr('y1', 0)
-    .attr('x2', function(d, i){ return rScale(maxValue * 1.1) * Math.cos(angleSlice * i - Math.PI / 2); })
-    .attr('y2', function(d, i){ return rScale(maxValue * 1.1) * Math.sin(angleSlice * i - Math.PI / 2); })
+    .attr('x2', function(d, i){ return rScale(maxValue * lineLengthScale) * Math.cos(angleSlice * i - Math.PI / 2); })
+    .attr('y2', function(d, i){ return rScale(maxValue * lineLengthScale) * Math.sin(angleSlice * i - Math.PI / 2); })
     .attr('class', 'line')
     .style('stroke', 'white')
     .style('stroke-width', '2px');
@@ -287,7 +288,8 @@ export class D3testComponent implements OnInit {
     // // // // // // // // // // // //  Set-Up // // // // // // // // // // // // // // //
     // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
-    const margin = {top: 100, right: 100, bottom: 100, left: 100},
+    const marginNumber = 75;
+    const margin = {top: marginNumber, right: marginNumber, bottom: marginNumber, left: marginNumber},
       width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
       height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
@@ -296,33 +298,18 @@ export class D3testComponent implements OnInit {
     // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
     const data = [
-      [ // iPhone
-        {axis: 'Battery Life', value: 0.22},
-        {axis: 'Brand', value: 0.28},
-        {axis: 'Contract Cost', value: 0.29},
-        {axis: 'Design And Quality', value: 0.17},
-        {axis: 'Have Internet Connectivity', value: 0.22},
-        {axis: 'Large Screen', value: 0.02},
-        {axis: 'Price Of Device', value: 0.21},
-        {axis: 'To Be A Smartphone', value: 0.50}
-      ], [ // Samsung
-        {axis: 'Battery Life', value: 0.27},
-        {axis: 'Brand', value: 0.16},
-        {axis: 'Contract Cost', value: 0.35},
-        {axis: 'Design And Quality', value: 0.13},
-        {axis: 'Have Internet Connectivity', value: 0.20},
-        {axis: 'Large Screen', value: 0.13},
-        {axis: 'Price Of Device', value: 0.35},
-        {axis: 'To Be A Smartphone', value: 0.38}
-      ], [ // Nokia Smartphone
-        {axis: 'Battery Life', value: 0.26},
-        {axis: 'Brand', value: 0.10},
-        {axis: ' Contract Cost', value: 0.30},
-        {axis: 'Design And Quality', value: 0.14},
-        {axis: 'Have Internet Connectivity', value: 0.22},
-        {axis: 'Large Screen', value: 0.04},
-        {axis: 'Price Of Device', value: 0.41},
-        {axis: 'To Be A Smartphone', value: 0.30}
+      [ // Student
+        {axis: 'Algebra', value: 0.64},
+        {axis: 'Geometrie', value: 0.35},
+        {axis: 'Lineare Algebra', value: 0.53},
+        {axis: 'Analysis', value: 0.13},
+        {axis: 'Stochastik', value: 0.84}
+      ], [ // Average
+        {axis: 'Algebra', value: 0.42},
+        {axis: 'Geometrie', value: 0.59},
+        {axis: ' Lineare Algebra', value: 0.12},
+        {axis: 'Analysis', value: 0.66},
+        {axis: 'Stochastik', value: 0.57}
       ]
     ];
     // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
