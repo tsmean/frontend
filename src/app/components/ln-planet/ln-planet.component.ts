@@ -22,7 +22,7 @@ export class LnPlanetComponent implements OnInit {
 
   randomNegativeDelay = randomBetween(-100, 0) + 's';
   background = `rgba(255,255,255, ${randomBetween(0.75, 1)})`;
-  circleRadius = 30; // randomBetween(15, 30);
+  circleRadius =  randomBetween(15, 30);
   constructor() {}
 
   ngOnInit() {
