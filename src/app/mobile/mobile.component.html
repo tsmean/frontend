@@ -5,7 +5,7 @@
   
       <div class="loader" [style.display]="loading ? 'block' : 'none'" style="margin-top: 250px"></div>
   
-      <iframe src="/"
+      <iframe [src]="mobileUrl"
               [style.visibility]="!loading ? 'visible' : 'hidden'"
               class="mobile-iframe"
               frameborder="0"

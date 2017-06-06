@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StoreService} from '../services/store.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mobile',
@@ -10,17 +11,29 @@ import {Router} from '@angular/router';
 export class MobileComponent implements OnInit {
 
   loading = true;
+  queryParams: Params = {};
+  baseUrl = '/';
 
   constructor(
     private store: StoreService,
-    private router: Router
-  ) { }
-
+    private router: ActivatedRoute,
+    private sanitizer: DomSanitizer
+  ) {
+    router.queryParams.subscribe(queryParams => {
+      this.queryParams = queryParams;
+    });
+  }
 
   ngOnInit() {
     setTimeout(() => {
       this.loading = false;
     }, 2500);
+  }
+
+  get mobileUrl() {
+    const url = this.baseUrl + (this.queryParams.state ? this.queryParams.state : '');
+    console.log(url);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }

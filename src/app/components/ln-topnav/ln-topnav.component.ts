@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {StoreService} from '../../services/store.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-ln-topnav',
@@ -21,7 +21,7 @@ export class LnTopnavComponent implements OnInit {
     if (this.router.url.indexOf('mobile') > -1) {
       this.router.navigate(['/']);
     } else {
-      this.router.navigate(['/mobile']);
+      this.router.navigate(['/mobile'], {queryParams: {state: this.router.url.substring(1, this.router.url.length)}});
     }
   }
 
