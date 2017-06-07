@@ -27,7 +27,7 @@ export class DrawLinearFunctionComponent implements OnInit {
     const getSlope = (dataset): Slope => {
       if (dataset[1].x === dataset[0].x && dataset[1].y === dataset[0].y) {
         return 'isPoint';
-      } else if (dataset[1].x === dataset[0]) {
+      } else if (dataset[1].x === dataset[0].x) {
         return 'infiniteSlope';
       } else {
         return (dataset[1].y - dataset[0].y) / (dataset[1].x - dataset[0].x);
@@ -145,8 +145,6 @@ export class DrawLinearFunctionComponent implements OnInit {
           const minY = linearFunction(xMin, slope, offset);
           const maxY = linearFunction(xMax, slope, offset);
 
-          console.log(slope, offset, minY, maxY);
-
           const myLine = vis.append('line')          // attach a line
             .attr('x1', xScale(xMin))     // x position of the first end of the line
             .attr('y1', yScale(minY))      // y position of the first end of the line
@@ -156,9 +154,9 @@ export class DrawLinearFunctionComponent implements OnInit {
             .style('stroke', 'black');
         } else if (slope === 'infiniteSlope') {
           const myLine = vis.append('line')          // attach a line
-            .attr('x1', xScale(xMin))     // x position of the first end of the line
+            .attr('x1', xScale(dataset[0].x))     // x position of the first end of the line
             .attr('y1', yScale(xMin))      // y position of the first end of the line
-            .attr('x2', xScale(xMax))     // x position of the second end of the line
+            .attr('x2', xScale(dataset[0].x))     // x position of the second end of the line
             .attr('y2', yScale(xMax))    // y position of the second end of the line
             .style('stroke-width', 2)
             .style('stroke', 'black');
