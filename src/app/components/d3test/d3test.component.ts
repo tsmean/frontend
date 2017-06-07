@@ -317,7 +317,7 @@ export class D3testComponent implements OnInit {
     // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
     const color = d3.scale.ordinal()
-      .range(['#EDC951', '#CC333F', '#00A0B0']);
+      .range(['#207786', '#623287', '#00A0B0']);
 
     const radarChartOptions = {
       w: width,

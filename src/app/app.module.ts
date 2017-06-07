@@ -43,7 +43,7 @@ import { EinstufungstestComponent } from './components/einstufungstest/einstufun
 import { TileComponent } from './components/tile/tile.component';
 import {StoreService} from './services/store.service';
 import { MobileComponent } from './mobile/mobile.component';
-import { D3testComponent } from './d3test/d3test.component';
+import { D3testComponent } from './components/d3test/d3test.component';
 import { DrawLinearFunctionComponent } from './components/draw-linear-function/draw-linear-function.component';
 
 

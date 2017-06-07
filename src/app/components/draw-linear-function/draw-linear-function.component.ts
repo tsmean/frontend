@@ -14,9 +14,9 @@ export class DrawLinearFunctionComponent implements OnInit {
   ngOnInit() {
 
     // Set graph
-    const width = 900,
-      height = 900,
-      padding = 50;
+    const width = Math.min(700, window.innerWidth - 10);
+    const  height = width;
+    const padding = 10;
 
     // create an svg container
     const vis = d3.select('#graph')
@@ -41,12 +41,12 @@ export class DrawLinearFunctionComponent implements OnInit {
       .scale(xScale);
 
     const xAxisPlot = vis.append('g')
-      .attr('class', 'axis axis--x')
+      .attr('class', 'axis axis-x')
       .attr('transform', 'translate(0,' + (height / 2) + ')')
       .call(xAxis.tickSize(-height, 0, 0));
 
     const yAxisPlot = vis.append('g')
-      .attr('class', 'axis axis--y')
+      .attr('class', 'axis axis-y')
       .attr('transform', 'translate(' + (width / 2) + ',0)')
       .call(yAxis.tickSize(-width, 0, 0));
 
@@ -87,7 +87,8 @@ export class DrawLinearFunctionComponent implements OnInit {
         .data(dataset)
         .enter()
         .append('circle')
-        .attr(circleAttrs);
+        .attr(circleAttrs)
+        .classed('circle', true);
 
       if (Object.keys(dataset).length === 2) {
         // vis.selectAll('circle').remove();

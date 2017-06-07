@@ -11,17 +11,23 @@ export class LnTopnavComponent implements OnInit {
 
   constructor(
     public store: StoreService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
   }
 
   toggleMobileView () {
+    // TODO: it's a bit messy like that, maybe store route in app state instead of url?
     if (this.router.url.indexOf('mobile') > -1) {
-      this.router.navigate(['/']);
+      const stateParamEncodedLastState = this.activatedRoute.snapshot.queryParams.state;
+      const backState = '/' + (stateParamEncodedLastState ? stateParamEncodedLastState : '');
+      this.router.navigate([backState]);
     } else {
-      this.router.navigate(['/mobile'], {queryParams: {state: this.router.url.substring(1, this.router.url.length)}});
+      const state = this.router.url.substring(1, this.router.url.length);
+      const stateParams = state ? {queryParams: {state: state}} : undefined;
+      this.router.navigate(['/mobile'], stateParams);
     }
   }
 
