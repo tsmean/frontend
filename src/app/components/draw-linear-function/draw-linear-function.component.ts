@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var d3;
+import * as d3 from 'd3';
 
 interface LinearFunction {
   slope?: number;
@@ -48,11 +48,11 @@ export class DrawLinearFunctionComponent implements OnInit {
     };
 
     // dragging
-
     const drag = d3.behavior.drag()
       .on('drag', function(d, i) {
-        d.x += d3.event.dx;
-        d.y += d3.event.dy;
+
+        (<any>d).x += (<any>d3.event).dx;
+        (<any>d).y += (<any>d3.event).dy;
         d3.select(this).attr('transform', function(innerD, innerI){
           return 'translate(' + [ innerD.x, innerD.y ] + ')';
         });
@@ -66,7 +66,7 @@ export class DrawLinearFunctionComponent implements OnInit {
     const padding = 10;
 
     // create an svg container
-    const vis = d3.select('#graph')
+    const svg = d3.select('#graph')
       .append('svg:svg')
       .attr('width', width)
       .attr('height', height);
@@ -87,15 +87,15 @@ export class DrawLinearFunctionComponent implements OnInit {
       .orient('bottom')
       .scale(xScale);
 
-    const xAxisPlot = vis.append('g')
+    const xAxisPlot = svg.append('g')
       .attr('class', 'axis axis-x')
       .attr('transform', 'translate(0,' + (height / 2) + ')')
-      .call(xAxis.tickSize(-height, 0, 0));
+      .call(xAxis);
 
-    const yAxisPlot = vis.append('g')
+    const yAxisPlot = svg.append('g')
       .attr('class', 'axis axis-y')
       .attr('transform', 'translate(' + (width / 2) + ',0)')
-      .call(yAxis.tickSize(-width, 0, 0));
+      .call(yAxis);
 
     xAxisPlot.selectAll('.tick line')
       .attr('y1', (width - (2 * padding)) / 2 * -1)
@@ -107,11 +107,10 @@ export class DrawLinearFunctionComponent implements OnInit {
 
     const radius = 6;
 
-
     const dataset = [];
 
     // On Click, we want to add data to the array and chart
-    vis.on('click', function() {
+    svg.on('click', function() {
       const coords = d3.mouse(this);
 
       // Normally we go from data to pixels, but here we're doing pixels to data
@@ -120,7 +119,9 @@ export class DrawLinearFunctionComponent implements OnInit {
         y: Math.round( yScale.invert(coords[1]))
       };
 
-      dataset.push(newData);   // Push data to our array
+      if (Object.keys(dataset).length < 2) {
+        dataset.push(newData);   // Push data to our array
+      }
 
       const circleAttrs = {
         cx: function(d) { return xScale(d.x); },
@@ -128,7 +129,7 @@ export class DrawLinearFunctionComponent implements OnInit {
         r: radius
       };
 
-      vis.selectAll('circle')  // For new circle, go through the update process
+      svg.selectAll('circle')  // For new circle, go through the update process
         .data(dataset)
         .enter()
         .append('circle')
@@ -141,28 +142,28 @@ export class DrawLinearFunctionComponent implements OnInit {
         const slope = getSlope(dataset);
         const offset = getOffset(dataset);
 
+        let myLine;
+
         if (typeof slope === 'number') {
           const minY = linearFunction(xMin, slope, offset);
           const maxY = linearFunction(xMax, slope, offset);
 
-          const myLine = vis.append('line')          // attach a line
+          myLine = svg.append('line')          // attach a line
             .attr('x1', xScale(xMin))     // x position of the first end of the line
             .attr('y1', yScale(minY))      // y position of the first end of the line
             .attr('x2', xScale(xMax))     // x position of the second end of the line
             .attr('y2', yScale(maxY))    // y position of the second end of the line
             .style('stroke-width', 2)
-            .style('stroke', 'black');
+            .classed('connection-line', true);
         } else if (slope === 'infiniteSlope') {
-          const myLine = vis.append('line')          // attach a line
+          myLine = svg.append('line')          // attach a line
             .attr('x1', xScale(dataset[0].x))     // x position of the first end of the line
             .attr('y1', yScale(xMin))      // y position of the first end of the line
             .attr('x2', xScale(dataset[0].x))     // x position of the second end of the line
             .attr('y2', yScale(xMax))    // y position of the second end of the line
             .style('stroke-width', 2)
-            .style('stroke', 'black');
+            .classed('connection-line', true);
         }
-
-
 
         // if (Object.keys(dataset).length > 2) {
         //   vis.selectAll('circle').remove();

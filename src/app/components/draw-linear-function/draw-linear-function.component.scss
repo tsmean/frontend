@@ -7,6 +7,10 @@
   margin: 0 auto;
 }
 
+:host /deep/ .connection-line {
+  stroke: $accent;
+}
+
 :host /deep/ .axis path,
 :host /deep/ .axis line {
   fill: none;

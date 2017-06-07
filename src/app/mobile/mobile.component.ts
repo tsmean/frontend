@@ -32,7 +32,6 @@ export class MobileComponent implements OnInit {
 
   get mobileUrl() {
     const url = this.baseUrl + (this.queryParams.state ? this.queryParams.state : '');
-    console.log(url);
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
