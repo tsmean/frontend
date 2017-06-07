@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 declare var d3;
 
+interface LinearFunction {
+  slope?: number;
+  offset?: number;
+  error?: 'isPoint' | 'infiniteSlope';
+}
+
+type Slope = number | 'isPoint' | 'infiniteSlope';
+
 @Component({
   selector: 'app-draw-linear-function',
   templateUrl: './draw-linear-function.component.html',
@@ -9,13 +17,52 @@ declare var d3;
 })
 export class DrawLinearFunctionComponent implements OnInit {
 
+  // TODO's:
+  // redraw
+
   constructor() {}
 
   ngOnInit() {
 
+    const getSlope = (dataset): Slope => {
+      if (dataset[1].x === dataset[0].x && dataset[1].y === dataset[0].y) {
+        return 'isPoint';
+      } else if (dataset[1].x === dataset[0]) {
+        return 'infiniteSlope';
+      } else {
+        return (dataset[1].y - dataset[0].y) / (dataset[1].x - dataset[0].x);
+      }
+    };
+
+    const getOffset = (dataset): number => {
+      const slope = getSlope(dataset);
+      if (typeof slope === 'number') {
+        return dataset[0].y - dataset[0].x * slope;
+      } else {
+        return NaN;
+      }
+    };
+
+    const linearFunction = (x, slope, offset) => {
+      return x * slope + offset;
+    };
+
+    // dragging
+
+    const drag = d3.behavior.drag()
+      .on('drag', function(d, i) {
+        d.x += d3.event.dx;
+        d.y += d3.event.dy;
+        d3.select(this).attr('transform', function(innerD, innerI){
+          return 'translate(' + [ innerD.x, innerD.y ] + ')';
+        });
+      });
+
+    // end dragging
+
     // Set graph
     const width = Math.min(700, window.innerWidth - 10);
-    const  height = width;
+    const height = width; // must be square
     const padding = 10;
 
     // create an svg container
@@ -24,11 +71,11 @@ export class DrawLinearFunctionComponent implements OnInit {
       .attr('width', width)
       .attr('height', height);
 
-    const maxGrid = 5;
-    const minGrid = -5;
+    const xMax = 5;
+    const xMin = -5;
 
-    const xScale = d3.scale.linear().domain([maxGrid, minGrid]).range([width - padding, padding]);
-    const yScale = d3.scale.linear().domain([minGrid, maxGrid]).range([height - padding, padding]);
+    const xScale = d3.scale.linear().domain([xMax, xMin]).range([width - padding, padding]);
+    const yScale = d3.scale.linear().domain([xMin, xMax]).range([height - padding, padding]);
 
     // plot cartesian
     const yAxis = d3.svg.axis()
@@ -78,27 +125,46 @@ export class DrawLinearFunctionComponent implements OnInit {
       const circleAttrs = {
         cx: function(d) { return xScale(d.x); },
         cy: function(d) { return yScale(d.y); },
-        r: radius};
-
-
-      // alert(newData.x +':'+ newData.y)
+        r: radius
+      };
 
       vis.selectAll('circle')  // For new circle, go through the update process
         .data(dataset)
         .enter()
         .append('circle')
         .attr(circleAttrs)
+        .call(drag)
         .classed('circle', true);
 
       if (Object.keys(dataset).length === 2) {
-        // vis.selectAll('circle').remove();
-        const myLine = vis.append('line')          // attach a line
-          .attr('x1', xScale(dataset[0].x))     // x position of the first end of the line
-          .attr('y1', yScale(dataset[0].y))      // y position of the first end of the line
-          .attr('x2', xScale(dataset[1].x))     // x position of the second end of the line
-          .attr('y2', yScale(dataset[1].y))    // y position of the second end of the line
-          .style('stroke-width', 2)
-          .style('stroke', 'black');
+
+        const slope = getSlope(dataset);
+        const offset = getOffset(dataset);
+
+        if (typeof slope === 'number') {
+          const minY = linearFunction(xMin, slope, offset);
+          const maxY = linearFunction(xMax, slope, offset);
+
+          console.log(slope, offset, minY, maxY);
+
+          const myLine = vis.append('line')          // attach a line
+            .attr('x1', xScale(xMin))     // x position of the first end of the line
+            .attr('y1', yScale(minY))      // y position of the first end of the line
+            .attr('x2', xScale(xMax))     // x position of the second end of the line
+            .attr('y2', yScale(maxY))    // y position of the second end of the line
+            .style('stroke-width', 2)
+            .style('stroke', 'black');
+        } else if (slope === 'infiniteSlope') {
+          const myLine = vis.append('line')          // attach a line
+            .attr('x1', xScale(xMin))     // x position of the first end of the line
+            .attr('y1', yScale(xMin))      // y position of the first end of the line
+            .attr('x2', xScale(xMax))     // x position of the second end of the line
+            .attr('y2', yScale(xMax))    // y position of the second end of the line
+            .style('stroke-width', 2)
+            .style('stroke', 'black');
+        }
+
+
 
         // if (Object.keys(dataset).length > 2) {
         //   vis.selectAll('circle').remove();
@@ -106,6 +172,7 @@ export class DrawLinearFunctionComponent implements OnInit {
         // }
 
       }
+
     });
 
   }
