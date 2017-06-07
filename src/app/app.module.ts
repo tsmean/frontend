@@ -31,6 +31,7 @@ import {
   MdIconModule
 } from '@angular/material';
 import 'hammerjs';
+import {StoreService} from './services/store.service';
 
 
 @NgModule({
@@ -65,12 +66,13 @@ import 'hammerjs';
     MdIconModule
   ],
   providers: [
-      ResourceService,
-      HeroService,
-      UtilsService,
-      BroadcastService,
-      UserService,
-      NotifyService
+    ResourceService,
+    HeroService,
+    UtilsService,
+    BroadcastService,
+    UserService,
+    NotifyService,
+    StoreService
   ],
   bootstrap: [AppComponent]
 })

@@ -11,7 +11,7 @@ import {BroadcastService} from '../../services/broadcast.service';
 })
 export class HeroWrapperComponent implements OnInit {
 
-  private heroes: Hero[] = [];
+  heroes: Hero[] = [];
 
   constructor(
       private heroService: HeroService,
