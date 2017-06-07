@@ -8,6 +8,11 @@ interface LinearFunction {
   error?: 'isPoint' | 'infiniteSlope';
 }
 
+interface Point {
+  x: number;
+  y: number;
+}
+
 type Slope = number | 'isPoint' | 'infiniteSlope';
 
 @Component({
@@ -19,6 +24,7 @@ export class DrawLinearFunctionComponent implements OnInit {
 
   // TODO's:
   // redraw
+  // point should be over line
 
   constructor() {}
 
@@ -48,17 +54,22 @@ export class DrawLinearFunctionComponent implements OnInit {
     };
 
     // dragging
-    const drag = d3.behavior.drag()
-      .on('drag', function(d, i) {
+    const drag = d3.behavior.drag();
 
-        (<any>d).x += (<any>d3.event).dx;
-        (<any>d).y += (<any>d3.event).dy;
-        d3.select(this).attr('transform', function(innerD, innerI){
-          return 'translate(' + [ innerD.x, innerD.y ] + ')';
-        });
+    drag.on('drag', function(d: Point, i) {
+
+      d.x += (<any>d3.event).dx;
+      d.y += (<any>d3.event).dy;
+
+      d3.select(this).attr('transform', function(innerD, innerI){
+        return 'translate(' + [ d.x, d.y ] + ')';
       });
 
-    // end dragging
+    });
+
+    drag.on('dragend', function() {
+      (<any>d3.event).sourceEvent.stopPropagation();
+    });
 
     // Set graph
     const width = Math.min(700, window.innerWidth - 10);

@@ -27,7 +27,7 @@ export class MobileComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.loading = false;
-    }, 2500);
+    }, 3000);
   }
 
   get mobileUrl() {
