@@ -20,8 +20,8 @@ export class UserService {
     return this.utils.urlJoin(environment.api, 'users');
   }
 
-  login(username: string, password: string) {
-    this.http.get(this.loginApi).toPromise().then(resp => {
+  login(email: string, password: string) {
+    this.http.post(this.loginApi, {email: email, password: password}).toPromise().then(resp => {
       console.log(resp);
     });
   }

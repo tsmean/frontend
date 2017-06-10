@@ -1,5 +1,13 @@
 <div class="container" style="padding-top: 30px">
   <md-card class="center">
-    <h1>Coming Soon.</h1>
+    <md-input-container>
+      <input mdInput type="text" [(ngModel)]="user.email" placeholder="Email">
+    </md-input-container>
+    <md-input-container>
+      <input mdInput type="password" [(ngModel)]="user.password" placeholder="password">
+    </md-input-container>
+    <button color="primary" md-raised-button (click)="doLogin()">
+      Login
+    </button>
   </md-card>
 </div>
