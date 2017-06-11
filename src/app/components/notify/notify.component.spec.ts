@@ -54,7 +54,7 @@ describe('NotifyComponent', () => {
         NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
-        SignupPageComponent,
+
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,

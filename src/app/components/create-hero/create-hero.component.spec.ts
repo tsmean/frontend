@@ -54,7 +54,7 @@ describe('CreateHeroComponent', () => {
         NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
-        SignupPageComponent,
+
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,

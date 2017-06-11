@@ -55,7 +55,6 @@ describe('DisplayHeroListComponent', () => {
         NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
-        SignupPageComponent,
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,
