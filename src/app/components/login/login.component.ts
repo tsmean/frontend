@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   };
 
   doLogin() {
-    this.userService.login(this.user.email, this.user.password);
+    this.userService.logIn(this.user.email, this.user.password);
   }
 
   constructor(

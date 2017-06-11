@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {appCookies} from '../../services/cookies';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-topnav',
@@ -7,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopnavComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
+
+  loggedIn(): boolean {
+    return appCookies.cookiePresent();
+  }
+
+  logOut() {
+    console.log('logging out')
+    this.userService.logOut();
+  }
 
   ngOnInit() {
   }
