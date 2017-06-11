@@ -1,6 +1,8 @@
+@import '../../../variables';
+
 .app-jumbotron {
     min-height: 100vh;
-    background: linear-gradient(90deg,#3F51B5 0,#7986CB);
+    background: $primary-color; //linear-gradient(90deg,#3F51B5 0,#7986CB);
     display: flex;
     align-items: center;
     justify-content: center;

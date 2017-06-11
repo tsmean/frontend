@@ -18,7 +18,6 @@ import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {NotifyComponent} from './components/notify/notify.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {LandingComponent} from './components/landing/landing.component';
-import {SignupPageComponent} from './components/signup-page/signup-page.component';
 import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
 import {SpacerComponent} from './components/spacer/spacer.component';
 import {LoginComponent} from './components/login/login.component';
@@ -32,6 +31,9 @@ import {
 } from '@angular/material';
 import 'hammerjs';
 import {StoreService} from './services/store.service';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -46,11 +48,13 @@ import {StoreService} from './services/store.service';
     NotifyComponent,
     PageNotFoundComponent,
     LandingComponent,
-    SignupPageComponent,
     JumbotronComponent,
     SpacerComponent,
     LoginComponent,
-    HeroWrapperComponent
+    HeroWrapperComponent,
+    HomeComponent,
+    AdminComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
