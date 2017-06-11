@@ -25,6 +25,7 @@ export class UserService {
   login(email: string, password: string) {
     this.http.post(this.loginApi, {email: email, password: password}).toPromise()
         .then(resp => {
+          this.notifyService.success('logged in');
           console.log(resp);
         })
         .catch(errorResp => {
@@ -39,6 +40,5 @@ export class UserService {
       password: password
     }).toPromise();
   }
-
 
 }
