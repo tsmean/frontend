@@ -19,7 +19,6 @@ import {TopnavComponent} from '../topnav/topnav.component';
 import {SignUpComponent} from '../sign-up/sign-up.component';
 import {NotifyComponent} from '../notify/notify.component';
 import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
-import {SignupPageComponent} from '../signup-page/signup-page.component';
 import {SpacerComponent} from '../spacer/spacer.component';
 import {LoginComponent} from '../login/login.component';
 import {APP_BASE_HREF} from '@angular/common';

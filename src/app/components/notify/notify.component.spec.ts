@@ -18,7 +18,6 @@ import {DeleteHeroComponent} from '../delete-hero/delete-hero.component';
 import {TopnavComponent} from '../topnav/topnav.component';
 import {SignUpComponent} from '../sign-up/sign-up.component';
 import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
-import {SignupPageComponent} from '../signup-page/signup-page.component';
 import {JumbotronComponent} from '../jumbotron/jumbotron.component';
 import {SpacerComponent} from '../spacer/spacer.component';
 import {LoginComponent} from '../login/login.component';
