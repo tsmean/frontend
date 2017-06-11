@@ -11,11 +11,9 @@ import {ForumComponent} from '../components/forum/forum.component';
 import {KompetenzenUebersichtComponent} from '../components/kompetenzen-uebersicht/kompetenzen-uebersicht.component';
 import {AufgabentypenComponent} from '../components/aufgabentypen/aufgabentypen.component';
 import {MobileComponent} from '../mobile/mobile.component';
-import {HomeComponent} from '../home/home.component';
-import {AuthGuardService} from '../auth-guard.service';
-import {AdminComponent} from '../admin/admin.component';
-import {DashboardComponent} from '../dashboard/dashboard.component';
 import {LandingComponent} from '../components/landing/landing.component';
+import {AuthGuardService} from '../services/auth-guard.service';
+import {DashboardComponent} from '../components/dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [

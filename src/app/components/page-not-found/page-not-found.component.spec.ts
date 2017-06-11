@@ -18,7 +18,6 @@ import {DeleteHeroComponent} from '../delete-hero/delete-hero.component';
 import {TopnavComponent} from '../topnav/topnav.component';
 import {SignUpComponent} from '../sign-up/sign-up.component';
 import {NotifyComponent} from '../notify/notify.component';
-import {SignupPageComponent} from '../signup-page/signup-page.component';
 import {JumbotronComponent} from '../jumbotron/jumbotron.component';
 import {SpacerComponent} from '../spacer/spacer.component';
 import {LoginComponent} from '../login/login.component';
@@ -55,7 +54,7 @@ describe('PageNotFoundComponent', () => {
         NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
-        SignupPageComponent,
+
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,

@@ -41,6 +41,7 @@ import { KompetenzenUebersichtComponent } from './components/kompetenzen-uebersi
 import { EinstufungstestComponent } from './components/einstufungstest/einstufungstest.component';
 import { TileComponent } from './components/tile/tile.component';
 import {StoreService} from './services/store.service';
+<<<<<<< HEAD
 import { MobileComponent } from './mobile/mobile.component';
 import { D3testComponent } from './components/d3test/d3test.component';
 import { DrawLinearFunctionComponent } from './components/draw-linear-function/draw-linear-function.component';
@@ -48,6 +49,9 @@ import { DrawLinearFunctionComponent } from './components/draw-linear-function/d
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+=======
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+>>>>>>> master
 
 
 @NgModule({
@@ -66,6 +70,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     SpacerComponent,
     LoginComponent,
     HeroWrapperComponent,
+<<<<<<< HEAD
     LernnaviComponent,
     LnTopnavComponent,
     LnPlanetComponent,
@@ -81,6 +86,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DrawLinearFunctionComponent,
     HomeComponent,
     AdminComponent,
+=======
+>>>>>>> master
     DashboardComponent
   ],
   imports: [
