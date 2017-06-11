@@ -7,13 +7,13 @@ import {SignUpComponent} from '../components/sign-up/sign-up.component';
 import {HomeComponent} from '../home/home.component';
 import {AuthGuardService} from '../auth-guard.service';
 import {AdminComponent} from '../admin/admin.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
 
 const appRoutes: Routes = [
-  { path: '', component: LandingComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignUpComponent},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService]},
+  { path: '', component: LandingComponent, canActivate: [AuthGuardService]},
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService]},
+  { path: 'signup', component: SignUpComponent, canActivate: [AuthGuardService]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   { path: '**', component: PageNotFoundComponent }
 ];
 

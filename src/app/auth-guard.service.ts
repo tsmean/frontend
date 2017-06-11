@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, Router, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router';
+import {appCookies} from './services/cookies';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
@@ -9,13 +10,25 @@ export class AuthGuardService implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const isLoggedIn = false; // ... your login logic here
-    if (isLoggedIn) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
+
+    const url = state.url;
+    const forbiddenWhenLoggedOut = ['/dashboard'];
+    const forbiddenWhenLoggedIn = ['/login', '/signup', '/'];
+    const isLoggedIn = appCookies.userCookiePresent();
+
+    console.log(url, 'url');
+    console.log(isLoggedIn, forbiddenWhenLoggedOut.indexOf(url) > -1);
+
+    if (isLoggedIn && forbiddenWhenLoggedIn.indexOf(url) > -1) {
+      this.router.navigate(['/dashboard']);
       return false;
+    } else if (!isLoggedIn && forbiddenWhenLoggedOut.indexOf(url) > -1) {
+      this.router.navigate(['/']);
+      return false;
+    } else {
+      return true;
     }
+
   }
 
 }

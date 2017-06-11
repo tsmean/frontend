@@ -29,7 +29,11 @@ export namespace appCookies {
     return '';
   }
 
-  export function cookiePresent(): boolean {
+  export function getUserCookie(): string {
+    return getCookie('username');
+  }
+
+  export function userCookiePresent(): boolean {
     return getCookie('username') !== '';
   }
 

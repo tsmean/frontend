@@ -6,6 +6,7 @@ import {User} from '../../../../backend/src/db/user.model';
 import {NotifyService} from './notify.service';
 import {feutils} from './utils';
 import {appCookies} from './cookies';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
@@ -15,7 +16,8 @@ export class UserService {
   constructor(
     private http: Http,
     private utils: UtilsService,
-    private notifyService: NotifyService
+    private notifyService: NotifyService,
+    private router: Router
   ) { }
 
   logIn(email: string, password: string) {
@@ -23,23 +25,26 @@ export class UserService {
       .then(resp => {
         this.notifyService.success('logged in');
         appCookies.setCookie('username', email);
-        console.log(resp);
+        this.router.navigate(['/dashboard']);
       })
       .catch(errorResp => {
-        console.error(errorResp);
 
-        // TODO: only for testing, remove later:
-        appCookies.setCookie('username', email);
+        // This is ONLY for demostration purposes so frontend works without backend! Remove for real app.
+        appCookies.setUserCookie(email);
+        this.router.navigate(['/dashboard']);
 
-        this.notifyService.error(errorResp.statusText);
+        if (errorResp.status === 404) {
+          this.notifyService.error('Not connected to backend. Simulating log in for demo purpose.');
+        } else {
+          this.notifyService.error(errorResp.statusText);
+        }
+
       });
   }
 
   logOut() {
-
-    console.log('logging out 2')
-    this.user = feutils.undef;
     appCookies.setUserCookie('');
+    this.router.navigate(['/']);
   }
 
   createUser(user: User, password: string): Promise<any> {

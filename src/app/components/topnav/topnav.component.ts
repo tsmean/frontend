@@ -14,7 +14,7 @@ export class TopnavComponent implements OnInit {
   ) { }
 
   loggedIn(): boolean {
-    return appCookies.cookiePresent();
+    return appCookies.userCookiePresent();
   }
 
   logOut() {

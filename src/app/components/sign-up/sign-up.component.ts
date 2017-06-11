@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {NotifyService} from '../../services/notify.service';
+import {appCookies} from '../../services/cookies';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,14 +20,24 @@ export class SignUpComponent {
 
   constructor(
       private userService: UserService,
-      private notifyService: NotifyService
+      private notifyService: NotifyService,
+      private router: Router
   ) { }
 
   doSignUp() {
     this.userService.createUser(this.newUser, this.password).then(resp => {
       this.notifyService.success('User created');
+      appCookies.setUserCookie(this.newUser.email);
+      this.router.navigate(['/dashboard']);
     }, errorResp => {
-      this.notifyService.error(errorResp.statusText);
+
+      if (errorResp.status === 404) {
+        // ONLY for demo purposes
+        this.userService.logIn(this.newUser.email, this.password);
+      } else {
+        this.notifyService.error(errorResp.statusText);
+      }
+
     });
   }
 

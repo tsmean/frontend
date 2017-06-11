@@ -16,7 +16,7 @@ export class JumbotronComponent implements OnInit {
   }
 
   doStart() {
-    this.notifyService.success('Nothing happens. Yet!');
+    this.notifyService.success('Create an account to see app in action!');
   }
 
 }
