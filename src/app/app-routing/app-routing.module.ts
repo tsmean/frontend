@@ -11,12 +11,18 @@ import {ForumComponent} from '../components/forum/forum.component';
 import {KompetenzenUebersichtComponent} from '../components/kompetenzen-uebersicht/kompetenzen-uebersicht.component';
 import {AufgabentypenComponent} from '../components/aufgabentypen/aufgabentypen.component';
 import {MobileComponent} from '../mobile/mobile.component';
+import {HomeComponent} from '../home/home.component';
+import {AuthGuardService} from '../auth-guard.service';
+import {AdminComponent} from '../admin/admin.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
+import {LandingComponent} from '../components/landing/landing.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: LernnaviComponent}, // modified this one
-  { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignUpComponent},
+  { path: '', component: LernnaviComponent, canActivate: [AuthGuardService]},
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService]},
+  { path: 'signup', component: SignUpComponent, canActivate: [AuthGuardService]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -41,9 +47,10 @@ insertArrayTwoIntoArrayOne(appRoutes, lernnaviRoutes, 0);
     RouterModule.forRoot(appRoutes)
   ],
   exports: [
-    RouterModule,
-
+    RouterModule
   ],
-  providers: []
+  providers: [
+    AuthGuardService
+  ]
 })
 export class AppRoutingModule { }

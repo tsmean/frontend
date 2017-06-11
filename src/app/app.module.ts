@@ -18,7 +18,6 @@ import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {NotifyComponent} from './components/notify/notify.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {LandingComponent} from './components/landing/landing.component';
-import {SignupPageComponent} from './components/signup-page/signup-page.component';
 import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
 import {SpacerComponent} from './components/spacer/spacer.component';
 import {LoginComponent} from './components/login/login.component';
@@ -46,6 +45,9 @@ import { MobileComponent } from './mobile/mobile.component';
 import { D3testComponent } from './components/d3test/d3test.component';
 import { DrawLinearFunctionComponent } from './components/draw-linear-function/draw-linear-function.component';
 
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -60,7 +62,6 @@ import { DrawLinearFunctionComponent } from './components/draw-linear-function/d
     NotifyComponent,
     PageNotFoundComponent,
     LandingComponent,
-    SignupPageComponent,
     JumbotronComponent,
     SpacerComponent,
     LoginComponent,
@@ -77,7 +78,10 @@ import { DrawLinearFunctionComponent } from './components/draw-linear-function/d
     TileComponent,
     MobileComponent,
     D3testComponent,
-    DrawLinearFunctionComponent
+    DrawLinearFunctionComponent,
+    HomeComponent,
+    AdminComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

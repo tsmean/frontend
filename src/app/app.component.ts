@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
+
 import {StoreService} from './services/store.service';
+
+import {appCookies} from './services/cookies';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +38,7 @@ export class AppComponent {
       });
     };
     handleRouteChange();
+
   }
 
 
