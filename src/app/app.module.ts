@@ -31,7 +31,6 @@ import {
 } from '@angular/material';
 import 'hammerjs';
 import {StoreService} from './services/store.service';
-import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
@@ -51,7 +50,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SpacerComponent,
     LoginComponent,
     HeroWrapperComponent,
-    AdminComponent,
     DashboardComponent
   ],
   imports: [
