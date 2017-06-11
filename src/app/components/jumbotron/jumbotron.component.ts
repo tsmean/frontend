@@ -4,7 +4,7 @@ import {NotifyService} from '../../services/notify.service';
 @Component({
   selector: 'app-jumbotron',
   templateUrl: './jumbotron.component.html',
-  styleUrls: ['./jumbotron.component.css']
+  styleUrls: ['./jumbotron.component.scss']
 })
 export class JumbotronComponent implements OnInit {
 
