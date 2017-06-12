@@ -16,9 +16,6 @@ export class AuthGuardService implements CanActivate {
     const forbiddenWhenLoggedIn = ['/login', '/signup', '/'];
     const isLoggedIn = appCookies.userCookiePresent();
 
-    console.log(url, 'url');
-    console.log(isLoggedIn, forbiddenWhenLoggedOut.indexOf(url) > -1);
-
     if (isLoggedIn && forbiddenWhenLoggedIn.indexOf(url) > -1) {
       this.router.navigate(['/dashboard']);
       return false;
