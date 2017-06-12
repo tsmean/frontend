@@ -1,14 +1,21 @@
 @import '../../variables';
 
 .task-header h3 {
-  font-size: 20px;
+  font-size: 1.2rem;
+  color: white;
 }
 
 .task-header {
-  padding: 10px;
+  padding: 10px 20px;
   background: $primary-light;
+  @media (max-width: $break-xs) {
+    padding: 10px 10px;
+  }
 }
 
 .task-body {
-  padding: 10px;
+  padding: 20px;
+  @media (max-width: $break-xs) {
+    padding: 10px;
+  }
 }

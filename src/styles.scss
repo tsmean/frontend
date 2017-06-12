@@ -50,3 +50,7 @@ a:hover {
 .hv-center {
     display: flex; align-items: center; justify-content: center;
 }
+
+.mat-card.no-padding {
+    padding: 0;
+}

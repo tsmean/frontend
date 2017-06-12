@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 
 import * as d3 from 'd3';
 
@@ -26,7 +26,9 @@ export class DrawLinearFunctionComponent implements OnInit {
   // redraw
   // point should be over line
 
-  constructor() {}
+  constructor(
+    private el: ElementRef
+  ) { }
 
   ngOnInit() {
 
@@ -72,7 +74,7 @@ export class DrawLinearFunctionComponent implements OnInit {
     });
 
     // Set graph
-    const width = Math.min(700, window.innerWidth - 10);
+    const width = Math.min(700, this.el.nativeElement.offsetWidth - 10);
     const height = width; // must be square
     const padding = 10;
 
