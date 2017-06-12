@@ -48,6 +48,7 @@ import { DrawLinearFunctionComponent } from './components/draw-linear-function/d
 
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TaskComponent } from './task/task.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MobileComponent,
     D3testComponent,
     DrawLinearFunctionComponent,
-    DashboardComponent
+    DashboardComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

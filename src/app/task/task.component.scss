@@ -1,0 +1,14 @@
+@import '../../variables';
+
+.task-header h3 {
+  font-size: 20px;
+}
+
+.task-header {
+  padding: 10px;
+  background: $primary-light;
+}
+
+.task-body {
+  padding: 10px;
+}
