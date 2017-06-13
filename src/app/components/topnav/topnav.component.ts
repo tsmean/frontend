@@ -18,7 +18,6 @@ export class TopnavComponent implements OnInit {
   }
 
   logOut() {
-    console.log('logging out')
     this.userService.logOut();
   }
 

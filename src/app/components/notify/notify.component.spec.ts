@@ -27,6 +27,7 @@ import {UtilsService} from '../../services/utils.service';
 import {UserService} from '../../services/user.service';
 import {CreateHeroComponent} from '../create-hero/create-hero.component';
 import { NotifyComponent } from './notify.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
 
 describe('NotifyComponent', () => {
   let component: NotifyComponent;
@@ -54,7 +55,7 @@ describe('NotifyComponent', () => {
         NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
-
+        DashboardComponent,
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,

@@ -27,6 +27,7 @@ import {BroadcastService} from '../../services/broadcast.service';
 import {UtilsService} from '../../services/utils.service';
 import {UserService} from '../../services/user.service';
 import {CreateHeroComponent} from '../create-hero/create-hero.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
 
 
 describe('DeleteHeroComponent', () => {
@@ -55,7 +56,7 @@ describe('DeleteHeroComponent', () => {
         NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
-
+        DashboardComponent,
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,
