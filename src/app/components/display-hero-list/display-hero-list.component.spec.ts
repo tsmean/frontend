@@ -28,6 +28,7 @@ import {UserService} from '../../services/user.service';
 import {CreateHeroComponent} from '../create-hero/create-hero.component';
 
 import { DisplayHeroListComponent } from './display-hero-list.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
 
 describe('DisplayHeroListComponent', () => {
   let component: DisplayHeroListComponent;
@@ -58,7 +59,8 @@ describe('DisplayHeroListComponent', () => {
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,
-        HeroWrapperComponent
+        HeroWrapperComponent,
+        DashboardComponent
       ],
       imports: [
         BrowserModule,

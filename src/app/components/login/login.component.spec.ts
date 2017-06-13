@@ -28,6 +28,7 @@ import {UserService} from '../../services/user.service';
 import {CreateHeroComponent} from '../create-hero/create-hero.component';
 
 import { LoginComponent } from './login.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -55,7 +56,7 @@ describe('LoginComponent', () => {
         NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
-
+        DashboardComponent,
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,

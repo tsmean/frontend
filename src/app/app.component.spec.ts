@@ -27,6 +27,7 @@ import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
 import {SpacerComponent} from './components/spacer/spacer.component';
 import {LoginComponent} from './components/login/login.component';
 import {HeroWrapperComponent} from './components/hero-wrapper/hero-wrapper.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -65,7 +66,8 @@ describe('AppComponent', () => {
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,
-        HeroWrapperComponent
+        HeroWrapperComponent,
+        DashboardComponent
       ],
     }).compileComponents();
   }));

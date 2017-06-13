@@ -27,6 +27,7 @@ import {UtilsService} from '../../services/utils.service';
 import {UserService} from '../../services/user.service';
 import {CreateHeroComponent} from '../create-hero/create-hero.component';
 import { JumbotronComponent } from './jumbotron.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
 
 describe('JumbotronComponent', () => {
   let component: JumbotronComponent;
@@ -54,7 +55,7 @@ describe('JumbotronComponent', () => {
         NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
-
+        DashboardComponent,
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,

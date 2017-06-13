@@ -27,6 +27,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {BroadcastService} from '../../services/broadcast.service';
 import {UtilsService} from '../../services/utils.service';
 import {UserService} from '../../services/user.service';
+import {DashboardComponent} from '../dashboard/dashboard.component';
 
 describe('CreateHeroComponent', () => {
   let component: CreateHeroComponent;
@@ -54,7 +55,7 @@ describe('CreateHeroComponent', () => {
         NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
-
+        DashboardComponent,
         JumbotronComponent,
         SpacerComponent,
         LoginComponent,
