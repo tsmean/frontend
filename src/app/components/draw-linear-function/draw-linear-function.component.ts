@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges} from '@angular/core';
 
 import * as d3 from 'd3';
 
@@ -9,8 +9,9 @@ import * as d3 from 'd3';
 })
 export class DrawLinearFunctionComponent implements OnChanges {
 
+  // Configurable Inputs
   @Input()
-  width; // depends on rendered element, thus initialization code is in OnInit
+  width;
 
   @Input()
   xMax;
@@ -21,24 +22,16 @@ export class DrawLinearFunctionComponent implements OnChanges {
   @Input()
   circleRadius;
 
+  // Data Members. Persistence allows redrawing when parameters change (e.g. width of the plot)
   dataset = [];
-  drag;
   svg;
   padding = 10;
-  height;
-
-  circleAttrs (radius, xScale, yScale) {
-    return {
-      cx: function(d) { return xScale(d.x); },
-      cy: function(d) { return yScale(d.y); },
-      r: radius
-    };
-  }
 
   constructor(
     private el: ElementRef
   ) { }
 
+  // On changing outer parameters (width etc), the plot is redrawn
   ngOnChanges() {
     const plotConfig: PlotConfig = new PlotConfig(
       this.width,
@@ -48,6 +41,56 @@ export class DrawLinearFunctionComponent implements OnChanges {
       this.circleRadius
     );
     this.setup(plotConfig);
+  }
+
+  setup(plotConfig: PlotConfig) {
+
+    const that = this;
+
+    // create a new svg
+    if (that.svg) {
+      that.svg.remove();
+    }
+    const svg = that.svg = d3.select('#graph')
+      .append('svg:svg');
+
+    svg.attr('width', plotConfig.width)
+      .attr('height', plotConfig.height);
+
+    // plot cartesian
+    const generateAxis = () => {
+      const yAxis = d3.svg.axis()
+        .orient('left')
+        .scale(plotConfig.yScale);
+
+      // define the y axis
+      const xAxis = d3.svg.axis()
+        .orient('bottom')
+        .scale(plotConfig.xScale);
+
+      const xAxisPlot = that.svg.append('g')
+        .attr('class', 'axis axis-x')
+        .attr('transform', 'translate(0,' + (plotConfig.height / 2) + ')')
+        .call(xAxis);
+
+      const yAxisPlot = that.svg.append('g')
+        .attr('class', 'axis axis-y')
+        .attr('transform', 'translate(' + (plotConfig.width / 2) + ',0)')
+        .call(yAxis);
+
+      xAxisPlot.selectAll('.tick line')
+        .attr('y1', (plotConfig.width - (2 * plotConfig.padding)) / 2 * -1)
+        .attr('y2', (plotConfig.width - (2 * plotConfig.padding)) / 2 * 1);
+
+      yAxisPlot.selectAll('.tick line')
+        .attr('x1', (plotConfig.width - (2 * plotConfig.padding)) / 2 * -1)
+        .attr('x2', (plotConfig.width - (2 * plotConfig.padding)) / 2 * 1);
+    };
+    generateAxis();
+
+    const dragBehaviour = this.generateDragBehaviour(plotConfig.xScale, plotConfig.yScale);
+    this.setupClick(svg, plotConfig, dragBehaviour);
+    that.drawLine(plotConfig);
   }
 
   setupClick(svg, plotConfig: PlotConfig, drag) {
@@ -79,8 +122,7 @@ export class DrawLinearFunctionComponent implements OnChanges {
     });
   }
 
-  // Todo: is this the correct return type?
-  generateDragBehaviour(xScale, yScale): d3.behavior.Drag<any> {
+  generateDragBehaviour(xScale, yScale) {
 
     const drag = d3.behavior.drag();
 
@@ -90,7 +132,6 @@ export class DrawLinearFunctionComponent implements OnChanges {
       d.y += (<any>d3.event).dy;
 
       d3.select(this).attr('transform', function(innerD, innerI){
-        // duplication
         const newData = {
           x: Math.round( xScale.invert(d.x)),  // Takes the pixel number to convert to number
           y: Math.round( yScale.invert(d.y))
@@ -105,55 +146,6 @@ export class DrawLinearFunctionComponent implements OnChanges {
       (<any>d3.event).sourceEvent.stopPropagation();
     });
     return drag;
-  }
-
-  setup(plotConfig: PlotConfig) {
-
-    const that = this;
-
-    console.log(plotConfig);
-
-    // create a new svg
-    if (that.svg) {
-      that.svg.remove();
-    }
-    const svg = that.svg = d3.select('#graph')
-      .append('svg:svg');
-
-    svg.attr('width', plotConfig.width)
-      .attr('height', plotConfig.height);
-
-    // plot cartesian
-    const yAxis = d3.svg.axis()
-      .orient('left')
-      .scale(plotConfig.yScale);
-
-    // define the y axis
-    const xAxis = d3.svg.axis()
-      .orient('bottom')
-      .scale(plotConfig.xScale);
-
-    const xAxisPlot = that.svg.append('g')
-      .attr('class', 'axis axis-x')
-      .attr('transform', 'translate(0,' + (plotConfig.height / 2) + ')')
-      .call(xAxis);
-
-    const yAxisPlot = that.svg.append('g')
-      .attr('class', 'axis axis-y')
-      .attr('transform', 'translate(' + (plotConfig.width / 2) + ',0)')
-      .call(yAxis);
-
-    xAxisPlot.selectAll('.tick line')
-      .attr('y1', (plotConfig.width - (2 * plotConfig.padding)) / 2 * -1)
-      .attr('y2', (plotConfig.width - (2 * plotConfig.padding)) / 2 * 1);
-
-    yAxisPlot.selectAll('.tick line')
-      .attr('x1', (plotConfig.width - (2 * plotConfig.padding)) / 2 * -1)
-      .attr('x2', (plotConfig.width - (2 * plotConfig.padding)) / 2 * 1);
-
-    const dragBehaviour = this.generateDragBehaviour(plotConfig.xScale, plotConfig.yScale);
-    this.setupClick(svg, plotConfig, dragBehaviour);
-    that.drawLine(plotConfig);
   }
 
   drawLine(plotConfig: PlotConfig) {
@@ -212,6 +204,13 @@ export class DrawLinearFunctionComponent implements OnChanges {
     return x * slope + offset;
   }
 
+  circleAttrs (radius, xScale, yScale) {
+    return {
+      cx: function(d) { return xScale(d.x); },
+      cy: function(d) { return yScale(d.y); },
+      r: radius
+    };
+  }
 
 }
 
