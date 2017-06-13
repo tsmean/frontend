@@ -50,7 +50,6 @@ import { DrawLinearFunctionComponent } from './components/draw-linear-function/d
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TaskComponent } from './task/task.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

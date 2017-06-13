@@ -2,7 +2,7 @@
   <div class="task-header">
     <h3>Linearer Graph</h3>
   </div>
-  <div class="task-body">
-    <app-draw-linear-function></app-draw-linear-function>
+  <div class="task-body" (window:resize)="setWidth()" #taskBody>
+    <app-draw-linear-function *ngIf="width > 0" [width]="width"></app-draw-linear-function>
   </div>
 </md-card>
