@@ -30,7 +30,7 @@ const printDotsDuringAction = () => {
 // Bundling Angular
 console.log('Bundling frontend');
 const spawn = require( 'child_process' ).spawn;
-const ngBuild = spawn( 'ng', ['build', '--prod'] );
+const ngBuild = spawn( 'ng', ['build'] );
 
 printDotsDuringAction();
 
