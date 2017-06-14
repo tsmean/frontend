@@ -7,7 +7,6 @@ deploy.config.json
 /dist
 /tmp
 /out-tsc
-/server.js
 
 # dependencies
 /node_modules
