@@ -37,6 +37,7 @@ export class DrawLinearFunctionComponent implements OnChanges {
 
   // On changing outer parameters (width etc), the plot is redrawn
   ngOnChanges() {
+
     const plotConfig: PlotConfig = new PlotConfig(
       this.width,
       this.xMax,
@@ -141,6 +142,7 @@ export class DrawLinearFunctionComponent implements OnChanges {
   /**
    * Expected dragging behavior:
    * Should 'hop' (= move discontinuously) to the nearest point in the coordinate grid
+   * todo: it shouldn't be possible to drag the points outside of the plot
    */
   generateDragBehaviour(svg, plotConfig: PlotConfig) {
 
@@ -177,8 +179,6 @@ export class DrawLinearFunctionComponent implements OnChanges {
     });
 
     drag.on('dragend', function(dataPoint: Point) {
-
-      console.log(0, dataPoint);
 
       const clickedPoint: number[] = d3.mouse(this);
 
@@ -275,15 +275,6 @@ export class DrawLinearFunctionComponent implements OnChanges {
     return pointA.x === pointB.x && pointA.y === pointB.y;
   }
 
-  translationVector(pointA: Point, pointB: Point): Point {
-    return new Point(pointB.x - pointA.x, pointB.y - pointA.y);
-  }
-
-  convertDistanceFromDataToPixel (distance: number, plotConfig: PlotConfig): number {
-    const ratio: number = (plotConfig.width - 2 * plotConfig.padding) / (plotConfig.xMax - plotConfig.xMin);
-    return distance * ratio;
-  }
-
 }
 
 class PlotConfig {
@@ -307,22 +298,11 @@ class PlotConfig {
 
 }
 
-interface LinearFunction {
-  slope?: number;
-  offset?: number;
-  error?: 'isPoint' | 'infiniteSlope';
-}
-
 class Point {
   constructor(
     public x,
     public y
   ) {}
-}
-
-interface PixelPoint {
-  x: number;
-  y: number;
 }
 
 type Slope = number | 'isPoint' | 'infiniteSlope';

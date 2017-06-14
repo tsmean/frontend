@@ -20,7 +20,10 @@ export class TaskComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.setWidth();
+    // Timeout required so the width is only polled once the element is actually drawn.
+    setTimeout(() => {
+      this.setWidth();
+    }, 0);
   }
 
   setWidth() {
