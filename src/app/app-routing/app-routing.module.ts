@@ -15,16 +15,7 @@ import {LandingComponent} from '../components/landing/landing.component';
 import {AuthGuardService} from '../services/auth-guard.service';
 import {DashboardComponent} from '../components/dashboard/dashboard.component';
 
-
 const appRoutes: Routes = [
-  { path: '', component: LernnaviComponent, canActivate: [AuthGuardService]},
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService]},
-  { path: 'signup', component: SignUpComponent, canActivate: [AuthGuardService]},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
-  { path: '**', component: PageNotFoundComponent }
-];
-
-const lernnaviRoutes: Routes = [
   { path: 'lernnavi', component: LernnaviComponent},
   { path: 'einstufungstest', component: EinstufungstestComponent},
   { path: 'aufgaben-editor', component: AufgabenEditorComponent},
@@ -33,12 +24,12 @@ const lernnaviRoutes: Routes = [
   { path: 'kompetenzen-uebersicht', component: KompetenzenUebersichtComponent},
   { path: 'aufgabentypen', component: AufgabentypenComponent},
   { path: 'mobile', component: MobileComponent},
-
+  { path: '', component: LernnaviComponent, canActivate: [AuthGuardService]},
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService]},
+  { path: 'signup', component: SignUpComponent, canActivate: [AuthGuardService]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
+  { path: '**', component: PageNotFoundComponent }
 ];
-const insertArrayTwoIntoArrayOne = (a1, a2, insertPosition: number): void => {
-  a1.splice.apply(a1, [insertPosition, 0].concat(a2));
-};
-insertArrayTwoIntoArrayOne(appRoutes, lernnaviRoutes, 0);
 
 @NgModule({
   imports: [
