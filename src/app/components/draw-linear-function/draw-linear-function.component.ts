@@ -37,7 +37,6 @@ export class DrawLinearFunctionComponent implements OnChanges {
 
   // On changing outer parameters (width etc), the plot is redrawn
   ngOnChanges() {
-
     const plotConfig: PlotConfig = new PlotConfig(
       this.width,
       this.xMax,
@@ -149,14 +148,16 @@ export class DrawLinearFunctionComponent implements OnChanges {
     const that = this;
     const drag = d3.behavior.drag();
 
+    // Helper
+    const getClosestPoint = (point: Point): Point => {
+      return new Point(Math.round(point.x), Math.round(point.y));
+    };
+
     /* point starts at {x: dataPointX, y: dataPointY} and then moves according to translation rules */
     drag.on('drag', function(dataPoint: Point, circleNumber: number) {
 
       // old closest point.
       // performance could be optimized by not calculating oldPoint every time if unchanged.
-      const getClosestPoint = (point: Point): Point => {
-        return new Point(Math.round(dataPoint.x), Math.round(dataPoint.y));
-      };
       const oldClosestPoint = getClosestPoint(dataPoint);
 
       // changes since last drag event in x and y direction in pixel
@@ -180,16 +181,14 @@ export class DrawLinearFunctionComponent implements OnChanges {
 
     drag.on('dragend', function(dataPoint: Point) {
 
-      const clickedPoint: number[] = d3.mouse(this);
+      const newClosestPoint = getClosestPoint(dataPoint);
 
-      // Normally we go from data to pixels, but here we're doing pixels to data
-      const newData = {
-        x: Math.round(plotConfig.xScale.invert(clickedPoint[0])), // Takes the pixel number to convert to number
-        y: Math.round(plotConfig.yScale.invert(clickedPoint[1]))
-      };
+      dataPoint.x = newClosestPoint.x;
+      dataPoint.y = newClosestPoint.y;
+      d3.select(this).attr('cx', plotConfig.xScale(newClosestPoint.x));
+      d3.select(this).attr('cy', plotConfig.yScale(newClosestPoint.y));
+      that.drawLine(svg, plotConfig, that.dataset[0], that.dataset[1]);
 
-      dataPoint.x = newData.x;
-      dataPoint.y = newData.y;
     });
     return drag;
   }
