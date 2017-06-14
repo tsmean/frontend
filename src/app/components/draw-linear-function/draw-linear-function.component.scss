@@ -8,7 +8,7 @@
 }
 
 :host /deep/ .connection-line {
-  stroke: $accent;
+  stroke: $primary;
 }
 
 :host /deep/ .axis path,
@@ -34,4 +34,5 @@
 
 :host /deep/ circle {
   fill: $accent;
+  cursor: pointer;
 }
