@@ -23,22 +23,13 @@ export class UserService {
   logIn(email: string, password: string) {
     this.http.post(this.loginApi, {email: email, password: password}).toPromise()
       .then(resp => {
+        console.log('happeningg');
         this.notifyService.success('logged in');
         appCookies.setCookie('username', email);
         this.router.navigate(['/dashboard']);
       })
       .catch(errorResp => {
-
-        // This is ONLY for demostration purposes so frontend works without backend! Remove for real app.
-        appCookies.setUserCookie(email);
-        this.router.navigate(['/dashboard']);
-
-        if (errorResp.status === 404) {
-          this.notifyService.error('Not connected to backend. Simulating log in for demo purpose.');
-        } else {
-          this.notifyService.error(errorResp.statusText);
-        }
-
+        this.notifyService.error(errorResp.statusText);
       });
   }
 
