@@ -23,7 +23,6 @@ export class UserService {
   logIn(email: string, password: string) {
     this.http.post(this.loginApi, {email: email, password: password}).toPromise()
       .then(resp => {
-        console.log('happeningg');
         this.notifyService.success('logged in');
         appCookies.setCookie('username', email);
         this.router.navigate(['/dashboard']);

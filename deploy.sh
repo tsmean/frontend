@@ -2,6 +2,12 @@
 
 # Note: Since my poor demo server is unable to cope with `ng build`, bundling is performed locally.
 
+# Setup server (Debian / Ubuntu assumed)
+# ssh ${server} curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+# ssh ${server} sudo apt-get install -y nodejs
+# ssh ${server} sudo npm install -g forever
+# ssh ${server} sudo npm install -g yarn
+
 echo "Bundle Angular"
 ng build --prod
 
