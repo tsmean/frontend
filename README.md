@@ -27,6 +27,18 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
+# Deployment
+
+I have configured a small `deploy.sh` script.
+That way you should be able to deploy on any remote (ubuntu) instance easily.
+Just change the `server` variable in the script
+and run
+`./deploy.sh` or `./deploy.sh test` for a dry run on a different server / port
+than your usual production setup. Using this deploy script,
+the frontend is powered by the `server.js` script
+while consuming a REST-API from a remote location. It's also bundled for
+production.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
