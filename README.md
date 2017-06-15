@@ -5,6 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+By default, the app makes use of a REST-API provided by http://demo.tsmean.com:4242. You
+can change this in the `environment.ts` and `environment.prod.ts` files, for example use
+`localhost:3000` to connect to your own backend.
 
 ## Code scaffolding
 
