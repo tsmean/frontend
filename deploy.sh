@@ -13,12 +13,15 @@ else
   server="ubuntu@52.59.71.133"
 fi
 
-echo "Remove old directory"
-ssh ${server} "rm -rf ${rootdir}"
 
 echo "Upload new contents"
 ssh ${server} "mkdir ${rootdir}"
-scp -r dist "${server}:${rootdir}/dist"
+# First upload to special folder, so app is not interrupted (less downtime)
+scp -r dist "${server}:${rootdir}/uploaded-dist"
+# Then move that folder to actual location
+ssh ${server} "rm -rf ${rootdir}/dist"
+ssh ${server} "mv ${rootdir}/uploaded-dist ${rootdir}/dist"
+
 scp server.js "${server}:${rootdir}/server.js"
 scp package.json "${server}:${rootdir}/package.json"
 
