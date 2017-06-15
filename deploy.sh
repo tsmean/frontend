@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-server="ubuntu@52.59.71.133"
 
 # Note: Since my poor demo server is unable to cope with `ng build`, bundling is performed locally.
 
@@ -8,8 +7,10 @@ ng build --prod
 
 if [ "${1}" == "test" ]; then
   rootdir="tsmean/testfe"
+  server="ubuntu@52.59.71.133"
 else
   rootdir="tsmean/fe"
+  server="ubuntu@52.59.71.133"
 fi
 
 echo "Remove old directory"
