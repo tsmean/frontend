@@ -1,23 +1,38 @@
 #!/usr/bin/env bash
 server="ubuntu@52.59.71.133"
 
+# Note: Since my poor demo server is unable to cope with `ng build`, bundling is performed locally.
+
 echo "Bundle Angular"
 ng build --prod
 
+if [ "${1}" == "test" ]; then
+  rootdir="tsmean/testfe"
+else
+  rootdir="tsmean/fe"
+fi
+
 echo "Remove old directory"
-ssh ${server} "rm -rf tsmean/fe"
+ssh ${server} "rm -rf ${rootdir}"
 
 echo "Upload new contents"
-ssh ${server} "mkdir tsmean/fe"
-scp -r dist "${server}:~/tsmean/fe/dist"
-scp server.js "${server}:~/tsmean/fe/server.js"
-scp -r package.json "${server}:~/tsmean/fe/package.json"
+ssh ${server} "mkdir ${rootdir}"
+scp -r dist "${server}:${rootdir}/dist"
+scp server.js "${server}:${rootdir}/server.js"
+scp package.json "${server}:${rootdir}/package.json"
 
 echo "Install packages on server"
-ssh ${server} "cd tsmean/fe && npm install --production"
+ssh ${server} "cd ${rootdir} && yarn install --prod"
 
-echo "(Re-)Start server"
-ssh ${server} "forever stop tsmean/fe/server.js"
-ssh ${server} "forever start tsmean/fe/server.js"
+# Special logic for test setup
+if [ "${1}" == "test" ]; then
+  echo "(Re-)Start server"
+  ssh ${server} "forever stop ${rootdir}/server.js 9001"
+  ssh ${server} "forever start ${rootdir}/server.js 9001"
+else
+  echo "(Re-)Start server"
+  ssh ${server} "forever stop ${rootdir}/server.js 4243"
+  ssh ${server} "forever start ${rootdir}/server.js 4243"
+fi
 
 echo "Done!"

@@ -14,7 +14,7 @@ server.get('*', (req, res) => {
   res.status(200).sendFile(path.join(distPath, 'index.html'));
 });
 
-const port = 4243;
+const port = process.argv[2] || 4243;
 server.listen(port, function() {
   console.log('server listening on port ' + port);
 });
