@@ -14,11 +14,11 @@ export class HeroService {
     return 'heroes';
   }
 
-  getHeros(): Promise<Observable<Hero>[]> {
+  getHeros(): Promise<Hero[]> {
     return this.resourceService.getResources(this.resourceName);
   }
 
-  createHero(hero: Hero): Observable<Hero> {
+  createHero(hero: Hero): Promise<Hero> {
     return this.resourceService.createResource(hero, this.resourceName);
   }
 
@@ -26,7 +26,7 @@ export class HeroService {
     return this.resourceService.deleteResource(heroId, this.resourceName);
   }
 
-  updateHero(hero: Hero): Observable<Hero> {
+  updateHero(hero: Hero): Promise<Hero> {
     return this.resourceService.updateResource(hero, this.resourceName);
   }
 
