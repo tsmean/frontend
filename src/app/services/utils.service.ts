@@ -15,6 +15,9 @@ export class UtilsService {
    */
   public urlJoin(partOne, partTwo): string {
 
+    partOne = partOne.toString();
+    partTwo = partTwo.toString();
+
     // TODO: query parameter part
 
     if (partOne.charAt(partOne.length - 1) === '/') {
