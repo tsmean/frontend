@@ -49,6 +49,8 @@ import { DrawLinearFunctionComponent } from './components/draw-linear-function/d
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TaskComponent } from './task/task.component';
+import { MatheditorComponent } from './components/matheditor/matheditor.component';
+
 
 @NgModule({
   declarations: [
@@ -80,7 +82,8 @@ import { TaskComponent } from './task/task.component';
     D3testComponent,
     DrawLinearFunctionComponent,
     DashboardComponent,
-    TaskComponent
+    TaskComponent,
+    MatheditorComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +96,8 @@ import { TaskComponent } from './task/task.component';
     MdCardModule,
     MdToolbarModule,
     MdMenuModule,
-    MdIconModule
+    MdIconModule,
+    // SampleModule.forRoot()
   ],
   providers: [
     ResourceService,

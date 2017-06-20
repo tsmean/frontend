@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=624">
+
+<title>Math Editor</title>
+
+
+<link rel="stylesheet" type="text/css" href="../build/mathquill.css">
+
+
+</head>
+<body>
+<div id="body">
+
+<h1>Math Editor Demo </h1>
+
+<p>Editor: <span id="editable-math" class="mathquill-math-field">\frac{d}{dx}\sqrt{x}=</span></p>
+
+<p><a href="javascript:;" id="addsqrt">insert \sqrt{}</a></p>
+<p><a href="javascript:;" id="addfrac">insert \frac{}{}</a></p>
+
+<p>Latex source: <textarea id="latex-source" style="width:80%;vertical-align:top"></textarea></p>
+
+
+<script type="text/javascript" src="support/jquery-1.5.2.js"></script>
+<script type="text/javascript" src="../build/mathquill.js"></script>
+
+<script type="text/javascript">
+MQ = MathQuill.getInterface(MathQuill.getInterface.MAX);
+
+
+
+//on document ready, mathquill-ify all `<tag class="mathquill-*">latex</tag>`
+//elements according to their CSS class.
+$(function() {
+  $('.mathquill-static-math').each(function() { MQ.StaticMath(this); });
+  $('.mathquill-math-field').each(function() { MQ.MathField(this); });
+  $('.mathquill-text-field').each(function() { MQ.TextField(this); });
+
+
+
+});
+
+var latexMath = $('#editable-math'), latexSource = $('#latex-source'), htmlSource = $('#html-source'), codecogsimg = $('#codecogsimg'), codecogslink = $('#codecogslink'), htmlTransplantExample = $('#html-transplant-example');
+
+$(function() {
+
+  var mathFieldSpan = $('#editable-math');
+  var mathField = MQ.MathField(mathFieldSpan[0]);
+
+  $( "#addsqrt" ).click(function() {
+    mathField.cmd('\\nthroot');
+    var e = jQuery.Event("keydown");
+    $('#editable-math').trigger(e);
+  });
+
+
+
+$( "#addfrac" ).click(function() {
+  mathField.cmd('\\frac');
+  var e = jQuery.Event("keydown");
+  $('#editable-math').trigger(e);
+});
+});
+
+
+
+$(function() {
+  var latexMath = MQ($('#editable-math')[0]);
+  $(latexMath.el()).bind('keydown keypress', function() {
+    setTimeout(function() {
+      var latex = latexMath.latex();
+      latexSource.val(latex);
+//      location.hash = '#'+latex; //extremely performance-crippling in Chrome for some reason
+      htmlSource.text(printTree(latexMath.html()));
+      htmlTransplantExample.html(latexMath.html());
+    });
+  }).keydown();
+  latexMath.focus();
+
+  latexSource.bind('keydown keypress', function() {
+    var oldtext = latexSource.val();
+    setTimeout(function() {
+      var newtext = latexSource.val();
+      if(newtext !== oldtext) {
+        latexMath.latex(newtext);
+        htmlSource.text(printTree(latexMath.html()));
+        htmlTransplantExample.html(latexMath.html());
+      }
+    });
+  });
+
+  if(location.hash && location.hash.length > 1)
+    latexMath.latex(decodeURIComponent(location.hash.slice(1))).focus();
+});
+
+//print the HTML source as an indented tree. TODO: syntax highlight
+function printTree(html) {
+  html = html.match(/<[a-z]+|<\/[a-z]+>|./ig);
+  if (!html) return '';
+  var indent = '\n', tree = [];
+  for (var i = 0; i < html.length; i += 1) {
+    var token = html[i];
+    if (token.charAt(0) === '<') {
+      if (token.charAt(1) === '/') { //dedent on close tag
+        indent = indent.slice(0,-2);
+        if (html[i+1] && html[i+1].slice(0,2) === '</') //but maintain indent for close tags that come after other close tags
+          token += indent.slice(0,-2);
+      }
+      else { //indent on open tag
+        tree.push(indent);
+        indent += '  ';
+      }
+
+      token = token.toLowerCase();
+    }
+
+    tree.push(token);
+  }
+  return tree.join('').slice(1);
+}
+</script>
+</body>
+</html>
