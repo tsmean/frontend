@@ -25,17 +25,17 @@ export class CreateHeroComponent implements OnInit {
   }
 
   public createHero() {
+
     const heroObs = this.heroService.createHero(this.newHero);
-    heroObs.toPromise().then(resp => {
+    heroObs.then(resp => {
       this.notifyService.success('Hero Created');
+      this.newHeroCreated.emit({
+        value: resp
+      });
     }, errorResp => {
       this.notifyService.error(errorResp.statusText);
     });
-    heroObs.subscribe(createdHero => {
-      this.newHeroCreated.emit({
-        value: createdHero
-      });
-    });
+
   }
 
 

@@ -40,7 +40,7 @@ export class DisplayHeroComponent implements OnChanges, OnInit {
   }
 
   updateHero() {
-    this.heroService.updateHero(this.heroCopy).subscribe(hero => {
+    this.heroService.updateHero(this.heroCopy).then(hero => {
       this.hero = hero;
       this.toggleEditable();
     });

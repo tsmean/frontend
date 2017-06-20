@@ -31,95 +31,39 @@ export class ResourceService {
     private utils: UtilsService
   ) { }
 
-  getResources(resourceName: ResourceName): Promise<Observable<Resource>[]> {
-
+  getResources(resourceName: ResourceName): Promise<Resource[]> {
     return this.http.get(this.resourcesUrl(resourceName))
-        .toPromise()
-        .then(resp => {
-          // Store the resources as observables into the resource store.
-          if (Array.isArray(resp.json().data)) {
-
-            const observableArray: Observable<Resource>[] = [];
-
-            resp.json().data.forEach((resource: Resource) => {
-              this.storeResourceAsObservable(resource, resourceName);
-              observableArray.push(this.resourceStore[resourceName][resource.uid]);
-            });
-
-            // Return the response data
-            return observableArray;
-
-          } else {
-            console.error('Expected an array');
-          }
-        })
-        .catch(this.handleError);
+      .map(resp => resp.json().data)
+      .toPromise()
+      .catch(this.handleError);
   }
 
-  getResource(resourceId: string, resourceName: ResourceName): Observable<Resource> {
-
-    if (this.resourceStore[resourceName][resourceId]) {
-      return this.resourceStore[resourceName][resourceId];
-    } else {
-      return this.http.get(this.utils.urlJoin(this.resourcesUrl(resourceName), resourceId))
-          .map(resp => {
-            const resource = resp.json().data;
-            this.storeResourceAsObservable(resource, resourceName);
-            return resource;
-          })
-          .catch(this.handleError);
-    }
-
+  getResource(resourceId: string, resourceName: ResourceName): Promise<Resource> {
+    return this.http.get(this.utils.urlJoin(this.resourcesUrl(resourceName), resourceId))
+      .map(resp => resp.json().data)
+      .toPromise()
+      .catch(this.handleError);
   }
 
 
-  createResource(newResource: Resource, resourceName: ResourceName): Observable<Resource> {
-
+  createResource(newResource: Resource, resourceName: ResourceName): Promise<Resource> {
     return this.http.post(this.resourcesUrl(resourceName), newResource)
-        .map(resp => {
-          const createdResource = resp.json().data;
-          this.storeResourceAsObservable(createdResource, resourceName);
-          return createdResource;
-        })
-        .catch(this.handleError);
+      .map(resp => resp.json().data)
+      .toPromise()
+      .catch(this.handleError);
   }
 
-  updateResource(resource: Resource, resourceName: ResourceName): Observable<Resource> {
+  updateResource(resource: Resource, resourceName: ResourceName): Promise<Resource> {
     return this.http.put(this.resourcesUrl(resourceName), resource)
-        .map(resp => {
-
-          const resourceCopy = this.utils.deepCopyData(resource);
-          setTimeout(() => {
-            this.resourceStore[resourceName][resourceCopy.uid].next(resourceCopy);
-          }, 0);
-          return resourceCopy;
-        })
-        .catch(this.handleError);
+      .map(resp => resp.json().data)
+      .toPromise()
+      .catch(this.handleError);
   }
 
   deleteResource(resourceId: string, resourceName: ResourceName): Promise<Object> {
     return this.http.delete(this.utils.urlJoin(this.resourcesUrl(resourceName), resourceId))
         .toPromise()
-        .then(response => {
-          return response.json().data as Object;
-        })
         .catch(this.handleError);
-  }
-
-  private storeResourceAsObservable (resource: Resource, resourceName: ResourceName): void {
-    if (resource.uid) {
-
-      const subject = new Subject();
-      this.resourceStore[resourceName] = this.resourceStore[resourceName] || {};
-      this.resourceStore[resourceName][resource.uid] = subject;
-
-      setTimeout(() => {
-        subject.next(resource);
-      }, 0);
-
-    } else {
-      console.error('Expected a uid field the resource');
-    }
   }
 
   private handleError(error: any): Promise<any> {
