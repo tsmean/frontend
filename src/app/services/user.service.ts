@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import {UtilsService} from './utils.service';
 import {environment} from '../../environments/environment';
-import {User} from '../../../../backend/src/db/user.model';
 import {NotifyService} from './notify.service';
 import {feutils} from './utils';
 import {appCookies} from './cookies';
 import {Router} from '@angular/router';
+import {User} from '../models/user';
 
 @Injectable()
 export class UserService {
