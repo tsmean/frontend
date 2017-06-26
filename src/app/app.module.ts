@@ -50,7 +50,8 @@ import { DrawLinearFunctionComponent } from './components/draw-linear-function/d
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TaskComponent } from './task/task.component';
 import { MatheditorComponent } from './components/matheditor/matheditor.component';
-
+import { MathquillAngular2Module } from 'mathquill-angular2';
+import { PointPipe } from './pipes/point.pipe';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { MatheditorComponent } from './components/matheditor/matheditor.componen
     DrawLinearFunctionComponent,
     DashboardComponent,
     TaskComponent,
-    MatheditorComponent
+    MatheditorComponent,
+    PointPipe
   ],
   imports: [
     BrowserModule,
@@ -97,7 +99,7 @@ import { MatheditorComponent } from './components/matheditor/matheditor.componen
     MdToolbarModule,
     MdMenuModule,
     MdIconModule,
-    // SampleModule.forRoot()
+    MathquillAngular2Module.forRoot()
   ],
   providers: [
     ResourceService,

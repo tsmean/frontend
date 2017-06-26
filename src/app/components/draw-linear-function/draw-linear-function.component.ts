@@ -9,7 +9,18 @@ import * as d3 from 'd3';
 })
 export class DrawLinearFunctionComponent implements OnChanges {
 
-  // Configurable Inputs
+
+  /**
+   * Task data, should eventually move to another component
+   */
+  task = {
+    A: new Point(0, 0),
+    B: new Point(3, 4)
+  };
+
+  result: string;
+
+    // Configurable Inputs
   @Input()
   width;
 
@@ -29,11 +40,35 @@ export class DrawLinearFunctionComponent implements OnChanges {
   dataset: Point[] = [];
   line; // the connection line between the points
   svg;
-  padding = 10;
+  padding = 0;
 
   constructor(
     private el: ElementRef
-  ) { }
+  ) {
+
+  }
+
+  /**
+   * Submit button, should eventually move to another component
+   */
+  submit() {
+
+    const correctSlope = this.getSlope(this.task.A, this.task.B);
+    const correctOffset = this.getOffset(this.task.A, this.task.B);
+
+    const userA: Point = new Point(this.dataset[0].x, this.dataset[0].y);
+    const userB: Point = new Point(this.dataset[1].x, this.dataset[1].y);
+
+    const userInputSlope = this.getSlope(userA, userB);
+    const userInputOffset = this.getOffset(userA, userB);
+
+    if (userInputSlope === correctSlope && correctOffset === userInputOffset) {
+      alert('Correct!');
+    } else {
+      alert('False');
+    }
+
+  }
 
   // On changing outer parameters (width etc), the plot is redrawn
   ngOnChanges() {
@@ -297,7 +332,7 @@ class PlotConfig {
 
 }
 
-class Point {
+export class Point {
   constructor(
     public x,
     public y

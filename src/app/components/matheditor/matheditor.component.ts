@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MathQuillLoader} from 'mathquill-typescript';
+import {MathquillService} from 'mathquill-angular2';
 
 @Component({
   selector: 'app-matheditor',
@@ -8,9 +8,11 @@ import {MathQuillLoader} from 'mathquill-typescript';
 })
 export class MatheditorComponent implements OnInit {
 
-  constructor() {
-    MathQuillLoader.loadMathQuill(mathquill => {
-      console.log(mathquill.getInterface(2));
+  constructor(
+    public mathquillService: MathquillService
+  ) {
+    mathquillService.mq.then(resp => {
+      console.log(resp);
     });
   }
 
