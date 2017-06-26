@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {AppNotification, NotifyOptions} from '../models/notification';
 
+const DEFAULT_POSITION = {
+  bottom: 0,
+  right: 0
+};
 
 @Injectable()
 export class NotifyService {
@@ -18,7 +22,8 @@ export class NotifyService {
       background: options && options.background || '#DFF0D8',
       timer: options && options.timer || 1500,
       transition: '1.5s',
-      opacity: '1'
+      opacity: '1',
+      position: options && options.position || DEFAULT_POSITION
     });
   }
 
@@ -30,7 +35,8 @@ export class NotifyService {
       background: options && options.background || '#F2DEDE',
       timer: options && options.timer || 3000,
       transition: '3s',
-      opacity: '1'
+      opacity: '1',
+      position: options && options.position || DEFAULT_POSITION
     });
   }
 
@@ -38,5 +44,5 @@ export class NotifyService {
     return this._notifications;
   }
 
-
 }
+

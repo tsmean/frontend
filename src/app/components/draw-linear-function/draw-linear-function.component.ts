@@ -1,6 +1,8 @@
 import {Component, ElementRef, Input, OnChanges} from '@angular/core';
 
 import * as d3 from 'd3';
+import {NotifyService} from '../../services/notify.service';
+import {NotifyOptions} from '../../models/notification';
 
 @Component({
   selector: 'app-draw-linear-function',
@@ -8,7 +10,6 @@ import * as d3 from 'd3';
   styleUrls: ['./draw-linear-function.component.scss']
 })
 export class DrawLinearFunctionComponent implements OnChanges {
-
 
   /**
    * Task data, should eventually move to another component
@@ -20,7 +21,7 @@ export class DrawLinearFunctionComponent implements OnChanges {
 
   result: string;
 
-    // Configurable Inputs
+  // Configurable Inputs
   @Input()
   width;
 
@@ -40,10 +41,10 @@ export class DrawLinearFunctionComponent implements OnChanges {
   dataset: Point[] = [];
   line; // the connection line between the points
   svg;
-  padding = 0;
+  padding = 10;
 
   constructor(
-    private el: ElementRef
+    private notify: NotifyService
   ) {
 
   }
@@ -53,19 +54,31 @@ export class DrawLinearFunctionComponent implements OnChanges {
    */
   submit() {
 
-    const correctSlope = this.getSlope(this.task.A, this.task.B);
-    const correctOffset = this.getOffset(this.task.A, this.task.B);
+    const notifyOptions: NotifyOptions = {
+      position: {
+        bottom: 0,
+        left: 0
+      }
+    }
 
-    const userA: Point = new Point(this.dataset[0].x, this.dataset[0].y);
-    const userB: Point = new Point(this.dataset[1].x, this.dataset[1].y);
-
-    const userInputSlope = this.getSlope(userA, userB);
-    const userInputOffset = this.getOffset(userA, userB);
-
-    if (userInputSlope === correctSlope && correctOffset === userInputOffset) {
-      alert('Correct!');
+    if (this.dataset.length < 2) {
+      this.notify.error('Du brauchst zuerst zwei Punkte.', notifyOptions);
     } else {
-      alert('False');
+      const correctSlope = this.getSlope(this.task.A, this.task.B);
+      const correctOffset = this.getOffset(this.task.A, this.task.B);
+
+      const userA: Point = new Point(this.dataset[0].x, this.dataset[0].y);
+      const userB: Point = new Point(this.dataset[1].x, this.dataset[1].y);
+
+      const userInputSlope = this.getSlope(userA, userB);
+      const userInputOffset = this.getOffset(userA, userB);
+
+      if (userInputSlope === correctSlope && correctOffset === userInputOffset) {
+        this.notify.success('Richtig!', notifyOptions);
+      } else {
+        this.notify.error('Die Antwort ist leider falsch.', notifyOptions);
+      }
+
     }
 
   }
@@ -98,29 +111,35 @@ export class DrawLinearFunctionComponent implements OnChanges {
 
     // plot cartesian
     const generateAxis = () => {
+
+      /**
+       * Generating the axis
+       */
       const yAxis = d3.svg.axis()
         .orient('left')
         .scale(plotConfig.yScale);
-
-      // define the y axis
       const xAxis = d3.svg.axis()
         .orient('bottom')
         .scale(plotConfig.xScale);
 
+      /**
+       * Drawing the x- and y-axis
+       */
       const xAxisPlot = that.svg.append('g')
         .attr('class', 'axis axis-x')
         .attr('transform', 'translate(0,' + (plotConfig.height / 2) + ')')
         .call(xAxis);
-
       const yAxisPlot = that.svg.append('g')
         .attr('class', 'axis axis-y')
         .attr('transform', 'translate(' + (plotConfig.width / 2) + ',0)')
         .call(yAxis);
 
+      /**
+       * Drawing the grid lines
+       */
       xAxisPlot.selectAll('.tick line')
         .attr('y1', (plotConfig.width - (2 * plotConfig.padding)) / 2 * -1)
         .attr('y2', (plotConfig.width - (2 * plotConfig.padding)) / 2 * 1);
-
       yAxisPlot.selectAll('.tick line')
         .attr('x1', (plotConfig.width - (2 * plotConfig.padding)) / 2 * -1)
         .attr('x2', (plotConfig.width - (2 * plotConfig.padding)) / 2 * 1);
@@ -312,6 +331,9 @@ export class DrawLinearFunctionComponent implements OnChanges {
 }
 
 class PlotConfig {
+
+  daniel = 'cool';
+
 
   // scales DATA to PIXEL
   xScale: d3.scale.Linear<number, number>;

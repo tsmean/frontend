@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 $primary: #207786;
 $font-stack:    Helvetica, sans-serif;
 
@@ -9,3 +11,70 @@ $accent-light: #925eb7;
 $accent-dark: #340559;
 
 $break-xs: 756px;
+
+$primary-palette: (
+        50: #207786,
+        100: #207786,
+        200: #207786,
+        300: #207786,
+        400: #207786,
+        500: #207786,
+        600: #207786,
+        700: #207786,
+        800: #207786,
+        900: #207786,
+        A100: #623287,
+        A200: #623287,
+        A400: #623287,
+        A700: #623287,
+        contrast: (
+                50: $black-87-opacity,
+                100: $black-87-opacity,
+                200: $black-87-opacity,
+                300: white,
+                400: white,
+                500: $white-87-opacity,
+                600: $white-87-opacity,
+                700: $white-87-opacity,
+                800: $white-87-opacity,
+                900: $white-87-opacity,
+                A100: $black-87-opacity,
+                A200: white,
+                A400: $white-87-opacity,
+                A700: $white-87-opacity,
+        )
+);
+
+$accent-palette: (
+        50: #651fff,
+        100: #651fff,
+        200: #651fff,
+        300: #651fff,
+        400: #651fff,
+        500: #651fff,
+        600: #651fff,
+        700: #651fff,
+        800: #651fff,
+        900: #311b92,
+        A100: #623287,
+        A200: #623287,
+        A400: #623287,
+        A700: #6200ea,
+        contrast: (
+                50: $black-87-opacity,
+                100: $black-87-opacity,
+                200: $black-87-opacity,
+                300: white,
+                400: white,
+                500: $white-87-opacity,
+                600: $white-87-opacity,
+                700: $white-87-opacity,
+                800: $white-87-opacity,
+                900: $white-87-opacity,
+                A100: $black-87-opacity,
+                A200: white,
+                A400: $white-87-opacity,
+                A700: $white-87-opacity,
+        )
+);
+

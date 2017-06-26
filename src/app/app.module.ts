@@ -52,6 +52,7 @@ import { TaskComponent } from './task/task.component';
 import { MatheditorComponent } from './components/matheditor/matheditor.component';
 import { MathquillAngular2Module } from 'mathquill-angular2';
 import { PointPipe } from './pipes/point.pipe';
+import { BlaComponent } from './bla/bla.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { PointPipe } from './pipes/point.pipe';
     DashboardComponent,
     TaskComponent,
     MatheditorComponent,
-    PointPipe
+    PointPipe,
+    BlaComponent
   ],
   imports: [
     BrowserModule,

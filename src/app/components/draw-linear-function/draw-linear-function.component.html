@@ -1,14 +1,18 @@
 <div class="linear-function-graph-wrapper">
-  Zeiche eine Gerade, die durch die Punkte {{task.A | point}} und {{task.B | point}} geht.
+  <p style="font-size: 17px">
+    Zeiche eine Gerade, die durch die Punkte {{task.A | point}} und {{task.B | point}} geht.
+  </p>
   
   <div id="graph"></div>
   
   <div class="clearfix">
     <div class="float-right">
-      <button md-raised-button color="primary" (click)="submit()">
-        Submit
+      <button md-raised-button color="accent" (click)="submit()">
+        Überprüfen
       </button>
     </div>
   </div>
+  
+  <br>
 
 </div>

@@ -5,9 +5,10 @@
   color: white;
 }
 
+
 .task-header {
   padding: 10px 20px;
-  background: $primary-light;
+  background: $primary;
   @media (max-width: $break-xs) {
     padding: 10px 10px;
   }

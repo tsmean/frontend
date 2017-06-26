@@ -9,7 +9,7 @@ import 'rxjs/add/observable/timer';
 @Component({
   selector: 'app-notify',
   templateUrl: './notify.component.html',
-  styleUrls: ['./notify.component.css']
+  styleUrls: ['./notify.component.scss']
 })
 export class NotifyComponent implements OnInit, OnDestroy {
 
@@ -20,7 +20,7 @@ export class NotifyComponent implements OnInit, OnDestroy {
   public hidden;
 
   constructor(
-      private notifyService: NotifyService
+    private notifyService: NotifyService
   ) {}
 
   ngOnInit() {
