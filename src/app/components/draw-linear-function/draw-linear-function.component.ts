@@ -1,8 +1,7 @@
 import {Component, ElementRef, Input, OnChanges} from '@angular/core';
 
 import * as d3 from 'd3';
-import {NotifyService} from '../../services/notify.service';
-import {NotifyOptions} from '../../models/notification';
+import {NotifyService, NotifyOptions} from 'notify-angular2';
 
 @Component({
   selector: 'app-draw-linear-function',

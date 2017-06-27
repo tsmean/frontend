@@ -10,7 +10,7 @@ import {PageNotFoundComponent} from '../components/page-not-found/page-not-found
 import {HeroWrapperComponent} from '../components/hero-wrapper/hero-wrapper.component';
 import {SpacerComponent} from '../components/spacer/spacer.component';
 import {JumbotronComponent} from '../components/jumbotron/jumbotron.component';
-import {NotifyComponent} from '../components/notify/notify.component';
+import {NotifyComponent, NotifyService} from 'notify-angular2';
 import {TopnavComponent} from '../components/topnav/topnav.component';
 import {DisplayHeroListComponent} from '../components/display-hero-list/display-hero-list.component';
 import {DisplayHeroComponent} from '../components/display-hero/display-hero.component';
@@ -30,7 +30,6 @@ import {HeroService} from './hero.service';
 import {UtilsService} from './utils.service';
 import {BroadcastService} from './broadcast.service';
 import {UserService} from './user.service';
-import {NotifyService} from './notify.service';
 import {APP_BASE_HREF} from '@angular/common';
 
 describe('AuthGuardService', () => {

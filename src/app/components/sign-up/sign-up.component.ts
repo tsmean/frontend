@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
-import {NotifyService} from '../../services/notify.service';
+import {NotifyService} from 'notify-angular2';
 import {appCookies} from '../../services/cookies';
 import {Router} from '@angular/router';
 

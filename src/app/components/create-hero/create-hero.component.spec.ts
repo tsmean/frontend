@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateHeroComponent } from './create-hero.component';
 import {HeroService} from '../../services/hero.service';
-import {NotifyService} from '../../services/notify.service';
+import {NotifyService} from 'notify-angular2';
 import {ResourceService} from '../../services/resource.service';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -18,7 +18,6 @@ import {DisplayHeroComponent} from '../display-hero/display-hero.component';
 import {DeleteHeroComponent} from '../delete-hero/delete-hero.component';
 import {TopnavComponent} from '../topnav/topnav.component';
 import {SignUpComponent} from '../sign-up/sign-up.component';
-import {NotifyComponent} from '../notify/notify.component';
 import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
 import {JumbotronComponent} from '../jumbotron/jumbotron.component';
 import {SpacerComponent} from '../spacer/spacer.component';
@@ -52,7 +51,6 @@ describe('CreateHeroComponent', () => {
         DisplayHeroListComponent,
         TopnavComponent,
         SignUpComponent,
-        NotifyComponent,
         PageNotFoundComponent,
         LandingComponent,
         DashboardComponent,

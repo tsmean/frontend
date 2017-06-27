@@ -8,12 +8,18 @@ import {MathquillService} from 'mathquill-angular2';
 })
 export class MatheditorComponent implements OnInit {
 
+  options = {
+    buttonLatexContents: [
+      '+', '-', '*', '\\frac{}{}',
+      'x^2', '\\sqrt{}', 'x^{}', '\\sqrt[]{}',
+      '\\pi', '\\infty', '\\pm', 'x_{}',
+      '\\sum', '\\lim', '\\frac{d}{dx}', '\\int'
+    ]
+  }
+
   constructor(
-    public mathquillService: MathquillService
+
   ) {
-    mathquillService.mq.then(resp => {
-      console.log(resp);
-    });
   }
 
   ngOnInit() {

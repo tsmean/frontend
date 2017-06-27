@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import {UtilsService} from './utils.service';
 import {environment} from '../../environments/environment';
-import {NotifyService} from './notify.service';
+import {NotifyService} from 'notify-angular2';
 import {appCookies} from './cookies';
 import {Router} from '@angular/router';
 import {User} from '../models/user';

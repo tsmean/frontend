@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Hero} from '../../models/hero';
 import {HeroService} from '../../services/hero.service';
-import {NotifyService} from '../../services/notify.service';
+import {NotifyService} from 'notify-angular2';
 
 @Component({
   selector: 'app-create-hero',
