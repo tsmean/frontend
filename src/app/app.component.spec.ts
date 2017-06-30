@@ -11,7 +11,7 @@ import {HeroService} from './services/hero.service';
 import {UtilsService} from './services/utils.service';
 import {BroadcastService} from './services/broadcast.service';
 import {UserService} from './services/user.service';
-import {NotifyService} from './services/notify.service';
+import {NotifyService} from 'notify-angular';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {MdButtonModule, MdCardModule, MdIconModule, MdInputModule} from '@angular/material';
 import {CreateHeroComponent} from './components/create-hero/create-hero.component';
@@ -20,7 +20,7 @@ import {DisplayHeroComponent} from './components/display-hero/display-hero.compo
 import {DisplayHeroListComponent} from './components/display-hero-list/display-hero-list.component';
 import {TopnavComponent} from './components/topnav/topnav.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
-import {NotifyComponent} from './components/notify/notify.component';
+import {NotifyComponent} from 'notify-angular';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {LandingComponent} from './components/landing/landing.component';
 import {JumbotronComponent} from './components/jumbotron/jumbotron.component';

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignUpComponent } from './sign-up.component';
-import {NotifyService} from '../../services/notify.service';
+import {NotifyService} from 'notify-angular';
 import {UserService} from '../../services/user.service';
 import {MdButtonModule, MdCardModule, MdIconModule, MdInputContainer, MdInputModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
@@ -16,7 +16,7 @@ import {DeleteHeroComponent} from '../delete-hero/delete-hero.component';
 import {DisplayHeroComponent} from '../display-hero/display-hero.component';
 import {DisplayHeroListComponent} from '../display-hero-list/display-hero-list.component';
 import {TopnavComponent} from '../topnav/topnav.component';
-import {NotifyComponent} from '../notify/notify.component';
+import {NotifyComponent} from 'notify-angular';
 import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
 import {LandingComponent} from '../landing/landing.component';
 import {JumbotronComponent} from '../jumbotron/jumbotron.component';

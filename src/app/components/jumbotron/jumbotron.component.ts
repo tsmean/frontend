@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NotifyService} from '../../services/notify.service';
+import {NotifyService} from 'notify-angular';
 
 @Component({
   selector: 'app-jumbotron',

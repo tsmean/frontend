@@ -7,7 +7,6 @@ import {HeroService} from './services/hero.service';
 import {UtilsService} from './services/utils.service';
 import {BroadcastService} from './services/broadcast.service';
 import {UserService} from './services/user.service';
-import {NotifyService} from './services/notify.service';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {CreateHeroComponent} from './components/create-hero/create-hero.component';
 import {DeleteHeroComponent} from './components/delete-hero/delete-hero.component';
@@ -15,7 +14,6 @@ import {DisplayHeroComponent} from './components/display-hero/display-hero.compo
 import {DisplayHeroListComponent} from './components/display-hero-list/display-hero-list.component';
 import {TopnavComponent} from './components/topnav/topnav.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
-import {NotifyComponent} from './components/notify/notify.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {LandingComponent} from './components/landing/landing.component';
 import {JumbotronComponent} from './components/jumbotron/jumbotron.component';
@@ -33,6 +31,7 @@ import 'hammerjs';
 import {StoreService} from './services/store.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
+import { NotifyModule } from 'notify-angular';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DisplayHeroListComponent,
     TopnavComponent,
     SignUpComponent,
-    NotifyComponent,
     PageNotFoundComponent,
     LandingComponent,
     JumbotronComponent,
@@ -63,7 +61,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MdCardModule,
     MdToolbarModule,
     MdMenuModule,
-    MdIconModule
+    MdIconModule,
+    NotifyModule.forRoot()
   ],
   providers: [
     ResourceService,
@@ -71,7 +70,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     UtilsService,
     BroadcastService,
     UserService,
-    NotifyService,
     StoreService
   ],
   bootstrap: [AppComponent]
