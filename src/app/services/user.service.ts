@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import {UtilsService} from './utils.service';
 import {environment} from '../../environments/environment';
 import {NotifyService} from 'notify-angular';
-import {feutils} from './utils';
 import {appCookies} from './cookies';
 import {Router} from '@angular/router';
 import {User} from '../models/user';
+import {WebUtils} from '@tsmean/utils';
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
@@ -15,7 +16,6 @@ export class UserService {
 
   constructor(
     private http: Http,
-    private utils: UtilsService,
     private notifyService: NotifyService,
     private router: Router
   ) { }
@@ -45,11 +45,11 @@ export class UserService {
   }
 
   private get loginApi(): string {
-    return this.utils.urlJoin(environment.api, 'login');
+    return WebUtils.urlJoin(environment.api, 'login');
   }
 
   private get userApi(): string {
-    return this.utils.urlJoin(environment.api, 'users');
+    return WebUtils.urlJoin(environment.api, 'users');
   }
 
 
