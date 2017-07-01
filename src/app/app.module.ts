@@ -20,7 +20,6 @@ import {
   MdIconModule
 } from '@angular/material';
 import 'hammerjs';
-import {StoreService} from './services/store.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { NotifyModule } from 'notify-angular';
@@ -57,8 +56,8 @@ import {environment} from '../environments/environment';
     HeroModule.forRoot()
   ],
   providers: [
-    UserService,
-    StoreService
+    UserService
+
   ],
   bootstrap: [AppComponent]
 })

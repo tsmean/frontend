@@ -24,7 +24,7 @@
     "@angular/router": "^4.0.0",
     "@ngrx/core": "^1.2.0",
     "@ngrx/store": "^2.2.2",
-    "@tsmean/hero": "^1.0.4",
+    "@tsmean/hero": "^1.0.5",
     "@tsmean/resource": "^1.1.10",
     "@tsmean/utils": "^1.1.1",
     "core-js": "^2.4.1",

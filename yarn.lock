@@ -163,9 +163,9 @@
     magic-string "^0.19.0"
     source-map "^0.5.6"
 
-"@tsmean/hero@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@tsmean/hero/-/hero-1.0.4.tgz#0312109a6f94e6e1d419978f79523d4f5d52d76a"
+"@tsmean/hero@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@tsmean/hero/-/hero-1.0.5.tgz#1761c68952b8c99dfecf67d19022d35220f43d28"
   dependencies:
     "@tsmean/utils" "^1.1.0"
 
