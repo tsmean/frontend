@@ -4,3 +4,6 @@
 [submodule "resource"]
 	path = resource
 	url = https://github.com/tsmean/resource-angular
+[submodule "main"]
+	path = main
+	url = https://github.com/tsmean/main-angular
