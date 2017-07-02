@@ -1,0 +1,24 @@
+{
+  "name": "@tsmean/frontend",
+  "version": "1.0.0",
+  "description": "Strapping together the frontend of the tsmean starter kit",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "install": "./install.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsmean/frontend.git"
+  },
+  "keywords": [
+    "Frontend",
+    "tsmean"
+  ],
+  "author": "bersling@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tsmean/frontend/issues"
+  },
+  "homepage": "https://github.com/tsmean/frontend#readme"
+}
