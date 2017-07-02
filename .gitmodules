@@ -1,0 +1,9 @@
+[submodule "main"]
+	path = main
+	url = https://github.com/tsmean/main-angular
+[submodule "hero"]
+	path = hero
+	url = https://github.com/tsmean/hero-angular
+[submodule "resource"]
+	path = resource
+	url = https://github.com/tsmean/resource-angular
