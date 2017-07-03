@@ -7,7 +7,8 @@ for modulename in main resource hero user
 do
   cd ./${modulename}
   yarn install
-  cd src/app/${modulename}
-  yarn install
-  cd ../../../..
+  cd ..
+  # cd src/app/${modulename}
+  #yarn install
+  #cd ../../../..
 done
