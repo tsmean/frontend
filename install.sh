@@ -3,10 +3,11 @@
 git submodule init
 git submodule update
 
-for modulename in main resource hero
+for modulename in main resource hero user
 do
   cd ./${modulename}
   yarn install
-  tsc
-  cd ..
+  cd src/app/${modulename}
+  yarn install
+  cd ../../../..
 done
