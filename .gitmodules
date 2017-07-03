@@ -7,3 +7,6 @@
 [submodule "main"]
 	path = main
 	url = https://github.com/tsmean/main-angular
+[submodule "user"]
+	path = user
+	url = https://github.com/tsmean/user-angular
