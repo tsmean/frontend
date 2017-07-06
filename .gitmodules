@@ -1,6 +1,3 @@
-[submodule "hero"]
-	path = hero
-	url = https://github.com/tsmean/hero-angular
 [submodule "resource"]
 	path = resource
 	url = https://github.com/tsmean/resource-angular
@@ -10,3 +7,6 @@
 [submodule "user"]
 	path = user
 	url = https://github.com/tsmean/user-angular
+[submodule "animal"]
+	path = animal
+	url = https://github.com/tsmean/animal-angular
