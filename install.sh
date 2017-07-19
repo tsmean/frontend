@@ -7,7 +7,7 @@ cd main
 yarn install
 cd ..
 
-for modulename in resource hero user
+for modulename in resource animal user
 do
   cd ./${modulename}
   yarn install
