@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/tsmean/frontend#readme",
   "devDependencies": {
-    "@types/node": "^8.0.15"
+    "@types/node": "^8.0.15",
+    "typescript": "^2.4.2"
   }
 }
