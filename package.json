@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "install": "./install.sh"
+    "postinstall": "ts-node install.ts"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/tsmean/frontend/issues"
   },
-  "homepage": "https://github.com/tsmean/frontend#readme"
+  "homepage": "https://github.com/tsmean/frontend#readme",
+  "devDependencies": {
+    "@types/node": "^8.0.15"
+  }
 }
