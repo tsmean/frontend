@@ -28,6 +28,7 @@ handleCommandResult(updateSubmodules, {exitOnError: false}); // git writes to st
 const startingDirectory = process.cwd();
 changeToDirectory(startingDirectory);
 changeToDirectory('main');
+console.log('Installing app. This may take a while...');
 const installModuleDependencies = spawnSync(spawnSyncCommand('npm'), ['install'], spawnSyncOptions);
 handleCommandResult(installModuleDependencies, {exitOnError: true});
 
