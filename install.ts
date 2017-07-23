@@ -30,19 +30,19 @@ changeToDirectory(startingDirectory);
 changeToDirectory('main');
 console.log('Installing app. This may take a while...');
 const installModuleDependencies = spawnSync(spawnSyncCommand('npm'), ['install'], spawnSyncOptions);
-handleCommandResult(installModuleDependencies, {exitOnError: true});
+handleCommandResult(installModuleDependencies, {exitOnError: false});
 
 /**
  * Helper functions
  */
 function handleCommandResult(result: SpawnSyncReturns<string>, options?: HandleCommandResultOptions) {
   if (result.error) {
-    console.error('ERROR in process:', result.error);
+    console.error('ERROR IN PROCESS:', result.error);
     if (options.exitOnError) {
       process.exit()
     }
   } else if (result.stderr !== undefined && result.stderr !== "") {
-    console.error('stderr not empty:', result.stderr);
+    console.error('STDERR NOT EMPTY:', result.stderr);
     if (options.exitOnError) {
       process.exit()
     }
