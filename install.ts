@@ -41,7 +41,6 @@ function installGitModules () {
  */
 function installMainModule() {
   const startingDirectory = process.cwd();
-  console.log('sd', startingDirectory);
   changeToDirectory(startingDirectory);
   changeToDirectory('main');
   console.log('Installing app. This may take a while...');
@@ -59,7 +58,7 @@ function handleCommandResult(result: SpawnSyncReturns<string>, options?: HandleC
       process.exit()
     }
   } else if (result.stderr !== undefined && result.stderr !== "") {
-    console.error('STDERR NOT EMPTY:', result.stderr);
+    console.error(result.stderr);
     if (options.exitOnError) {
       process.exit()
     }
