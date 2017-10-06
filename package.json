@@ -4,7 +4,7 @@
   "description": "Strapping together the frontend of the tsmean starter kit",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
+    "test": "echo 'test modules individually'",
     "postinstall": "ts-node install.ts"
   },
   "repository": {
